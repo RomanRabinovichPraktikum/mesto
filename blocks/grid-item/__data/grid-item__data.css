@@ -1,0 +1,10 @@
+.grid-item__data {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 21px;
+    margin-right: 30px;
+    margin-top: 25px;
+    margin-bottom: 31px;
+}
