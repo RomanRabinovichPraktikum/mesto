@@ -1,0 +1,11 @@
+.popup__text-field {    
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid #000;    
+    font-size: 14px;
+    line-height: 17px;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-size: normal;
+}
+
