@@ -2,26 +2,9 @@
     min-width: 320px;
     display: flex;
     flex-direction: column;
-    justify-content: stretch;
     margin: 0 auto;
     box-sizing: border-box;
+    align-items: center;
 }
 
-@media screen and (min-width: 1280px) {
-    .page-wrapper {
-        width: calc(1280px - 398px);        
-    }    
-}
-
-@media screen and (min-width: 321px) and (max-width: 1279px) {
-    .page-wrapper {
-        width: calc(100% - 398/960*(100vw - 320px)); /*на 960 пикселов изменения ширины экрана получаем (199 слева и 199 справа) 398 пикселов снижения ширины обертки*/
-    }    
-}
-
-@media screen and (max-width: 320px) {
-    .page-wrapper {
-        width: 100%;
-    }    
-}
 

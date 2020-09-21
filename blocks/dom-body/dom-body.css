@@ -1,6 +1,4 @@
 .dom-body {
     background-color: #000;
-    display: flex;
-    justify-content: center;
-    margin: 0 auto;
+    font-style:  normal;
 }
