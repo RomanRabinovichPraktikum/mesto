@@ -1,0 +1,37 @@
+.footer__copyright {
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    color: #545454;
+    margin: 0;
+    padding: 0;
+}
+
+@media screen and (min-width: 1280px) {
+    .footer__copyright {
+        font-size: 18px;
+        line-height: 22px;
+        margin-left: 0;
+        margin-top: 66px;
+        margin-bottom: 60px;
+    }
+}
+
+@media screen and (min-width: 321px) and (max-width: 1279px) {
+    .footer__copyright {
+        font-size: calc(14px + (18 - 14)/960*(100vw - 320px));          /*на 960 пикселов изменения ширины экрана получаем 18-14 пикселов изменения размера шрифта*/
+        line-height: calc(17px + (22 - 17)/960*(100vw - 320px));        /*на 960 пикселов изменения ширины экрана получаем 22-17 пикселов изменения интерлиньяжа*/
+        margin-left: calc(19px - (19 - 0)/960*(100vw - 320px));         /*на 960 пикселов изменения ширины экрана получаем 19-0 пикселов изменения внешнего отступа слева*/
+        margin-top: calc(48px + (66 - 48)/960*(100vw - 320px));         /*на 960 пикселов изменения ширины экрана получаем 66-48 пикселов изменения внешнего отступа сверху*/        
+        margin-bottom: calc(36px + (60 - 36)/960*(100vw - 320px));      /*на 960 пикселов изменения ширины экрана получаем 60-36 пикселов изменения внешнего отступа снизу*/
+    }        
+}
+
+@media screen and (max-width: 320px) {
+    .footer__copyright {
+        font-size: 14px;
+        line-height: 17px;  
+        margin-left: 19px;        
+        margin-top: 48px;  
+        margin-bottom: 36px;
+    }
+}
