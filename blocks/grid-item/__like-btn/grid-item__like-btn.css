@@ -1,0 +1,9 @@
+.grid-item__like-btn {
+    width: 21px;
+    height: 18px;
+}
+
+.grid-item__like-btn:hover {
+    opacity: 0.6;
+    cursor: pointer;
+}
