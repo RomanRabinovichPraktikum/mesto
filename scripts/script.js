@@ -8,28 +8,31 @@ window.onload = function() {
     let popupFirstNameField = popup.querySelector('.popup__first-name');
     let popupPersonPosition = popup.querySelector('.popup__person-position');
     let closeBtn = popup.querySelector('.popup__close-btn');
-    let submitBtn = popup.querySelector('.popup__submit-button');
+    let popupForm = popup.querySelector('.popup__form');
 
+    const togglePopupVisibility = () => {
+        if (popup.classList.contains('popup_opened'))
+            popup.classList.remove('popup_opened');
+        else
+            popup.classList.add('popup_opened');
+    };
 
-    closeBtn.addEventListener('click', () => {
-        popup.classList.remove('popup_opened');
+    closeBtn.addEventListener('click', (e) => {
+        togglePopupVisibility();
     });
 
-    submitBtn.addEventListener('click', () => {        
+    popupForm.addEventListener('submit', (e) => {
+        e.preventDefault();
         profileTitle.textContent = popupFirstNameField.value;
         profileSubTitle.textContent = popupPersonPosition.value;
-        popup.classList.remove('popup_opened');
+        togglePopupVisibility();
     });
 
 
-    editBtn.addEventListener('click', () => {
-        let profileTitleText = profileTitle.textContent;
-        let profileSubTitleText = profileSubTitle.textContent;
-                
-        popupFirstNameField.value = profileTitleText;
-        popupPersonPosition.value = profileSubTitleText;
-
-        popup.classList.add('popup_opened');
+    editBtn.addEventListener('click', (e) => {
+        popupFirstNameField.value = profileTitle.textContent;
+        popupPersonPosition.value = profileSubTitle.textContent;
+        togglePopupVisibility();
     });
 
 };
