@@ -1,6 +1,10 @@
 .grid-item__like-btn {
     width: 21px;
     height: 18px;
+    background: url(../../../images/like.svg) center no-repeat;
+    background-size: contain;
+    padding: 0;
+    border: none;
 }
 
 .grid-item__like-btn:hover {
