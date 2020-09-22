@@ -1,41 +1,41 @@
 .profile {
     display: flex;
-    align-items: center;    
+    align-items: center;
     margin: 0 auto;
 }
 
 
 @media screen and (min-width: 1280px) {
     .profile {
-        width: calc(1280px - 398px); /*882px*/
+        width: 882px;
         margin-top: 40px;
     }
 }
 
 @media screen and (min-width: 321px) and (max-width: 1279px) {
-    .profile {        
-        width: calc(282px + 600/960*(100vw - 320px));            /*на 960 пикселов изменения ширины экрана получаем (882 - 282) = 600 пикселов снижения ширины профайла*/
-        margin-top: calc(42px - 2/960*(100vw - 320px));         /*на 960 пикселов изменения ширины экрана получаем 42-40 пикселов изменения внешнего отступа сверху*/        
-    }    
+    .profile {
+        width: calc(282px + 600/960*(100vw - 320px));           /*на 960 пикселов изменения ширины экрана получаем (882 - 282) = 600 пикселов снижения ширины профайла*/
+        margin-top: calc(42px - 2/960*(100vw - 320px));         /*на 960 пикселов изменения ширины экрана получаем 42-40 пикселов изменения внешнего отступа сверху*/
+    }
 }
 
 @media screen and (min-width: 701px) {
-    .profile {        
-        flex-direction: row;        
-        justify-content: space-between;       
+    .profile {
+        flex-direction: row;
+        justify-content: space-between;
     }
 }
 
 
 @media screen and (max-width: 700px) {
     .profile {        
-        flex-direction: column;        
+        flex-direction: column;
     }
 }
 
 @media screen and (max-width: 320px) {
-    .profile {        
-        width: calc(320px - 38px); /*282px*/
+    .profile {
+        width: 282px;
         margin-top: 42px;
     }
 }

@@ -1,28 +1,28 @@
-.header__logo {    
+.header__logo {
     border: 0;
 }
 
 @media screen and (min-width: 1280px) {
     .header__logo {
-        margin-left: 3px;        
+        margin-left: 3px;
         width: 142px;
         height: 33px;
-    }    
+    }
 }
 
 @media screen and (min-width: 321px) and (max-width: 1279px) {
     .header__logo {
-        margin-left: calc(27px - 24/960*(100vw - 320px));       /*на 960 пикселов изменения ширины экрана получаем 27-3 пикселов изменения внешнего отступа слева*/        
+        margin-left: calc(27px - 24/960*(100vw - 320px));       /*на 960 пикселов изменения ширины экрана получаем 27-3 пикселов изменения внешнего отступа слева*/
         width: calc(104px + 38/960*(100vw - 320px));            /*на 960 пикселов изменения ширины экрана получаем 142-104 пикселов изменения высоты изображения*/
         height: calc(24px + 9/960*(100vw - 320px));             /*на 960 пикселов изменения ширины экрана получаем 33-24 пикселов изменения высоты изображения*/
-    }        
+    }
 }
 
 
 @media screen and (max-width: 320px) {
     .header__logo {
-        margin-left: 27px;        
+        margin-left: 27px;
         width: 104px;
         height: 24px;
-    }    
+    }
 }

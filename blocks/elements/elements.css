@@ -1,7 +1,7 @@
 .elements {
     display: flex;
     margin: 0 auto;
-    justify-content: center;    
+    justify-content: center;
 }
 
 @media screen and (min-width: 1280px) {
@@ -12,13 +12,13 @@
 
 @media screen and (min-width: 321px) and (max-width: 1279px) {
     .elements {
-        margin-top: calc(36px + 10/960*(100vw - 320px));         /*на 960 пикселов изменения ширины экрана получаем 46-36 пикселов изменения внешнего отступа сверху*/        
-    }    
+        margin-top: calc(36px + 10/960*(100vw - 320px));         /*на 960 пикселов изменения ширины экрана получаем 46-36 пикселов изменения внешнего отступа сверху*/
+    }
 }
 
 
 @media screen and (max-width: 320px) {
     .elements {
-        margin-top: 36px;        
+        margin-top: 36px;
     }
 }
