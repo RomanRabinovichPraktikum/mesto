@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./styles/index.css">  
+  <link rel="stylesheet" href="./pages/index.css">  
   <title>Mesto.Russia</title>
 </head>
 <body class="page">
 
     <div class="page__container">
         <header class="header">
-            <img class="header__logo" src="./images/logo.svg" alt="Mesto.Russia">
+            <div class="header__logo" title="Mesto.Russia"></div>
         </header>
 
         <main class="content">     
@@ -20,12 +20,12 @@
                     <div class="profile__info">                
                         <div class="profile__title-group">
                             <h1 class="profile__title">Жак-Ив Кусто</h1>
-                            <button type="button" class="profile__edit-button" title="Редактировать"></button>
+                            <button type="button" class="profile__edit-button" aria-label="Редактировать"></button>
                         </div>
                         <p class="profile__subtitle">Исследователь океана</p>
                     </div>
                 </div>
-                <button type="button" class="profile__add-button" title="Добавить"></button>
+                <button type="button" class="profile__add-button" aria-label="Добавить"></button>
             </section>
 
             <section class="elements">
@@ -33,43 +33,43 @@
                     <li class="grid-item">
                         <img class="grid-item__photo" src="./images/tver.jpg" alt="Тверь">
                         <div class="grid-item__data">
-                            <span class="grid-item__title">Тверь</span>
-                            <a href="#"><img src="./images/like.svg" alt="Like" title="Лайкнуть" class="grid-item__like-btn"></a>
+                            <h3 class="grid-item__title">Тверь</h3>
+                            <button type="button" aria-label="Лайкнуть" class="grid-item__like-btn"></button>
                         </div>
                     </li>
                     <li class="grid-item">
                         <img class="grid-item__photo" src="./images/moscow.jpg" alt="Москва">
                         <div class="grid-item__data">
-                            <span class="grid-item__title">Москва</span>
-                            <a href="#"><img src="./images/like.svg" alt="Like" title="Лайкнуть" class="grid-item__like-btn"></a>
+                            <h3 class="grid-item__title">Москва</h3>
+                            <button type="button" aria-label="Лайкнуть" class="grid-item__like-btn"></button>
                         </div>
                     </li>
                     <li class="grid-item">
                         <img class="grid-item__photo" src="./images/peterburg.jpg" alt="С.-Петербург">
                         <div class="grid-item__data">
-                            <span class="grid-item__title">Санкт-Петербург</span>
-                            <a href="#"><img src="./images/like.svg" alt="Like" title="Лайкнуть" class="grid-item__like-btn"></a>
+                            <h3 class="grid-item__title">Санкт-Петербург</h3>
+                            <button type="button" aria-label="Лайкнуть" class="grid-item__like-btn"></button>
                         </div>
                     </li>
                     <li class="grid-item">
                         <img class="grid-item__photo" src="./images/yaroslavl.jpg" alt="Ярославль">
                         <div class="grid-item__data">
-                            <span class="grid-item__title">Ярославль</span>
-                            <a href="#"><img src="./images/like.svg" alt="Like" title="Лайкнуть" class="grid-item__like-btn"></a>
+                            <h3 class="grid-item__title">Ярославль</h3>
+                            <button type="button" aria-label="Лайкнуть" class="grid-item__like-btn"></button>
                         </div>
                     </li>
                     <li class="grid-item">
                         <img class="grid-item__photo" src="./images/ekaterinburg.jpg" alt="Екатеринбург">
                         <div class="grid-item__data">
-                            <span class="grid-item__title">Екатеринбург</span>
-                            <a href="#"><img src="./images/like.svg" alt="Like" title="Лайкнуть" class="grid-item__like-btn"></a>
+                            <h3 class="grid-item__title">Екатеринбург</h3>
+                            <button type="button" aria-label="Лайкнуть" class="grid-item__like-btn"></button>
                         </div>
                     </li>
                     <li class="grid-item">
                         <img class="grid-item__photo" src="./images/kazan.jpg" alt="Казань">
                         <div class="grid-item__data">
-                            <span class="grid-item__title">Казань</span>
-                            <a href="#"><img src="./images/like.svg" alt="Like" title="Лайкнуть" class="grid-item__like-btn"></a>
+                            <h3 class="grid-item__title">Казань</h3>
+                            <button type="button" aria-label="Лайкнуть" class="grid-item__like-btn"></button>
                         </div>
                     </li>
 
@@ -84,15 +84,15 @@
 
     <div class="popup">
         <div class="popup__container">
-            <form class="popup__form" method="post" >
-                <h2 class="popup__title">Редактировать профиль</h2>
+            <form class="popup__form" name="popupForm" method="post">
+                <h4 class="popup__title">Редактировать профиль</h2>
 
-                <input type="text" name="firstname" class="popup__first-name popup__text-field">
+                <input type="text" name="person" class="popup__text-field popup__text-field_role_person">
 
-                <input type="text" name="position" class="popup__person-position popup__text-field">
+                <input type="text" name="position" class="popup__text-field popup__text-field_role_position">
 
                 <button type="submit" class="popup__submit-button">Сохранить</button>
-                <button type="button" class="popup__close-btn" title="Закрыть"></button>
+                <button type="button" class="popup__close-btn" aria-label="Закрыть"></button>
             </form>
         </div>
     </div>
