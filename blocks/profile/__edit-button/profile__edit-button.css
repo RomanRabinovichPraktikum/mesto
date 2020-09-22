@@ -6,7 +6,7 @@
     background-repeat: no-repeat;
     background-position: center center;
     box-sizing: border-box;
-    vertical-align: middle;
+    vertical-align: middle;    
 }
 
 .profile__edit-button:hover {
@@ -19,6 +19,7 @@
         height: 24px;
         width: 24px;   
         background-size: 10px;
+        margin-left: 17px;
     }
 }
 
@@ -27,6 +28,7 @@
         width: calc(18px + 6/960*(100vw - 320px));
         height: calc(18px + 6/960*(100vw - 320px));
         background-size: calc(8px + 2/960*(100vw - 320px));
+        margin-left: calc(10px + 7/960*(100vw - 320px));
     }
 }
 
@@ -36,5 +38,6 @@
         width: 18px;
         height: 18px;
         background-size: 8px;
+        margin-left: 10px;
     }
 }

@@ -3,6 +3,9 @@
     font-family: 'Inter', Arial, Helvetica, sans-serif;
     color: #fff;
     font-weight: normal;    
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;       
 }
 
 
@@ -10,6 +13,7 @@
     .profile__subtitle {
         font-size: 18px;
         line-height: 22px;    
+        max-width: 560px;
     }
 }
 
@@ -20,8 +24,22 @@
     }    
 }
 
+@media screen and (min-width: 701px) {
+    .profile__subtitle {
+        max-width: 560px;
+        width: calc(282px + 600/960*(100vw - 320px) - 320px);
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .profile__subtitle {
+        max-width: calc(282px + 600/960*(100vw - 320px));
+    }
+}
+
 @media screen and (max-width: 320px) {
     .profile__subtitle {
+        max-width: 282px;
         font-size: 14px;        
         line-height: 17px;    
     }

@@ -1,5 +1,6 @@
 .popup {
     position: relative;
+    display: none;
 }
 
 .popup::after {

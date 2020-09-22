@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./styles/index.css">
+  <script src="./scripts/script.js"></script>
   <title>Mesto.Russia</title>
 </head>
 <body class="dom-body">
@@ -17,8 +18,11 @@
             <section class="profile">    
                 <div class="profile__info-wrapper">
                     <img src="./images/avatar.png" alt="Жак-Ив Кусто">
-                    <div class="profile__info">                        
-                        <h1 class="profile__title">Жак-Ив Кусто <button class="profile__edit-button" title="Редактировать"></button></h1>
+                    <div class="profile__info">                
+                        <div class="profile__title-group">
+                            <h1 class="profile__title">Жак-Ив Кусто</h1>
+                            <button class="profile__edit-button" title="Редактировать">
+                        </div>
                         <p class="profile__subtitle">Исследователь океана</p>
                     </div>
                 </div>
@@ -81,13 +85,16 @@
 
     <div class="popup">
         <div class="popup__container">
-            <h2 class="popup__title">Редактировать профиль</h2>
+            <div class="popup__window">
+                <h2 class="popup__title">Редактировать профиль</h2>
 
-            <input type="text" name="firstname" class="popup__first-name popup__text-field">
+                <input type="text" name="firstname" class="popup__first-name popup__text-field">
 
-            <input type="text" name="position" class="popup__person-position popup__text-field">
+                <input type="text" name="position" class="popup__person-position popup__text-field">
 
-            <button type="submit">Сохранить</button>
+                <button type="submit" class="popup__submit-button">Сохранить</button>
+                <button class="popup__close-btn" title="Закрыть"></button>
+            </div>
         </div>
     </div>
 

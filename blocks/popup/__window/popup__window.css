@@ -1,0 +1,10 @@
+.popup__window {
+    position: relative;
+    display: flex;
+    background: #fff;
+    flex-direction: column;
+    border-radius: 10px;
+    padding-left: 22px;
+    padding-right: 22px;
+    box-sizing: border-box;
+}
