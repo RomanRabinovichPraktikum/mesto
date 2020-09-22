@@ -1,11 +1,11 @@
 @media screen and (min-width: 601px) {
-    .popup__first-name {
+    .popup__text-field_role_person {
         margin-top: 54px;
     }
 }
 
 @media screen and (max-width: 600px) {
-    .popup__first-name {
+    .popup__text-field_role_person {
         margin-top: 75px;
     }
 }
