@@ -4,7 +4,19 @@
     background: #fff;
     flex-direction: column;
     border-radius: 10px;
-    padding-left: 22px;
-    padding-right: 22px;
     box-sizing: border-box;
+}
+
+@media screen and (min-width: 601px) {
+    .popup__form {
+        padding-left: 36px;
+        padding-right: 36px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .popup__form {
+        padding-left: 22px;
+        padding-right: 22px;
+    }
 }
