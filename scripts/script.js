@@ -10,18 +10,14 @@ window.onload = function() {
     let closeBtn = popup.querySelector('.popup__close-btn');
     let popupForm = popup.querySelector('.popup__form');
 
-    const checkPopupVisible = () => {
-        return popup.classList.contains('popup_opened');
-    }
-
     const togglePopupVisibility = () => {
-        if (checkPopupVisible())
+        if (popup.classList.contains('popup_opened'))
             popup.classList.remove('popup_opened');
         else
             popup.classList.add('popup_opened');
     };
 
-    closeBtn.addEventListener('click', (e) => {
+    closeBtn.addEventListener('click', () => {
         togglePopupVisibility();
     });
 
@@ -33,25 +29,10 @@ window.onload = function() {
     });
 
 
-    editBtn.addEventListener('click', (e) => {
+    editBtn.addEventListener('click', () => {
         popupPersonField.value = profileTitle.textContent;
         popupPersonPositionField.value = profileSubTitle.textContent;
         togglePopupVisibility();
     });
 
-    //закрываем заодно и по ESC (удобно же ж)
-    document.addEventListener("keydown", (e) => {
-        e = e || window.event;
-        let isEscape = false;
-
-        if ("key" in e) {
-            isEscape = (e.key === "Escape" || e.key === "Esc");
-        } else {
-            isEscape = (e.keyCode === 27);
-        }
-        
-        if (isEscape && checkPopupVisible()) {
-            togglePopupVisibility();
-        }
-    });
 };
