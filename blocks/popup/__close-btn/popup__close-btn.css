@@ -2,6 +2,8 @@
     position: absolute;
     border: 0;
     background: url(../../../images/close_sign.svg) center no-repeat;
+    padding:0;
+    box-sizing: border-box;
 }
 
 .popup__close-btn:hover {
@@ -11,11 +13,11 @@
 
 @media screen and (min-width: 601px) {
     .popup__close-btn {
-        width: 41px;
-        height: 41px;
-        background-size: 41px;
-        right: -32px;
-        top: -32px;
+        width: 48px;
+        height: 48px;
+        background-size: 48px;
+        right: -38px;
+        top: -38px;
     }    
 }
 
