@@ -40,6 +40,7 @@ export const createNewCard = (cardData, position = 'tail') => {
     const cardImg = cardObj.querySelector('.grid-item__photo');
     const cardTitle = cardObj.querySelector('.grid-item__title');
     const likeButton = cardObj.querySelector('.grid-item__like-btn');
+    const trashButton = cardObj.querySelector('.grid-item__trash-btn');
 
     cardImg.src = cardData.link;
     cardImg.alt = cardData.name;
@@ -50,6 +51,11 @@ export const createNewCard = (cardData, position = 'tail') => {
     likeButton.addEventListener('click', e => {
         const currentButton = e.currentTarget;
         currentButton.classList.add('grid-item__like-btn_liked');
+    });
+
+    trashButton.addEventListener('click', e => {
+        const currentButton = e.currentTarget;
+        currentButton.parentNode.remove();
     });
 };
 
