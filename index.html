@@ -39,25 +39,9 @@
         </footer>    
     </div>
 
-    <div class="popup">
-        <div class="popup__container">
-            <form class="popup__form" name="popupForm" method="post">
-                <h4 class="popup__title">Редактировать профиль</h4>
-
-                <input type="text" name="person" class="popup__text-field popup__text-field_role_person">
-
-                <input type="text" name="position" class="popup__text-field popup__text-field_role_position">
-
-                <button type="submit" class="popup__submit-button">Сохранить</button>
-                <button type="reset" class="popup__close-btn" aria-label="Закрыть"></button>
-            </form>
-        </div>
-    </div>
-    <script src="./scripts/script.js" type="module"></script>
-
     <template id="card-template">
         <li class="grid-item">
-            <img class="grid-item__photo">
+            <img src="" class="grid-item__photo" alt="">
             <div class="grid-item__data">
                 <h2 class="grid-item__title"></h2>
                 <button type="button" aria-label="Лайкнуть" class="grid-item__like-btn"></button>
@@ -65,5 +49,35 @@
         </li>
     </template>
 
+    <template id="popup-template">
+        <div class="popup">
+            <div class="popup__container">
+                <form class="popup__form" name="popupForm" method="post">
+                    <h4 class="popup__title"></h4>
+
+                    <!-- название, placeholder и дополнительный класс поля меняются от вида попапа
+                    для персоны - name="person"  "popup__text-field_role_person"
+                    для нового места - name="placename"  "popup__text-field_role_placename",
+                    -->
+
+                    <input type="text" name="" placeholder="" class="popup__text-field">
+
+                    <!-- название, placeholder и дополнительный класс поля меняются от вида попапа:
+                    для персоны - name="position"  "popup__text-field_role_position",
+                    для нового места - name="placepic"  "popup__text-field_role_placepic",
+                    -->
+                    <input type="text" name="" placeholder="" class="popup__text-field">
+
+                    <!--текст кнопки меняется в зависимости от вида попапа:
+                    для персоны - Сохранить, для нового места - Создать -->
+                    <button type="submit" class="popup__submit-button"></button>
+
+                    <button type="reset" class="popup__close-btn" aria-label="Закрыть"></button>
+                </form>
+            </div>
+        </div>
+    </template>
+
+    <script src="./scripts/script.js" type="module"></script>
 </body>
 </html>

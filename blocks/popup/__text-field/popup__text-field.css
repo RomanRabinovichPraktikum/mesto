@@ -1,5 +1,6 @@
 .popup__text-field {
     border: none;
+    outline: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     font-size: 14px;
     line-height: 17px;
@@ -8,3 +9,6 @@
     padding-bottom: 13px;
 }
 
+.popup__text-field::placeholder {
+    color: #c4c4c4;
+}

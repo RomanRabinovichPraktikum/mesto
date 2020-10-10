@@ -1,42 +1,24 @@
 import * as Cards from './cards.js'
+import * as Popups from './popup.js'
 
 window.onload = function() {
-    Cards.initializeCards();
+    Cards.initialize();
+    Popups.initialize();
 
-    let editBtn = document.querySelector('.profile__edit-button');
+    const editBtn = document.querySelector('.profile__edit-button');
+    const addCardBtn = document.querySelector('.profile__add-button');
 
-    let profileTitle = document.querySelector('.profile__title');
-    let profileSubTitle = document.querySelector('.profile__subtitle');
-    
-    let popup = document.querySelector('.popup');
-    let popupPersonField = popup.querySelector('.popup__text-field_role_person');
-    let popupPersonPositionField = popup.querySelector('.popup__text-field_role_position');
-    let closeBtn = popup.querySelector('.popup__close-btn');
-    let popupForm = popup.querySelector('.popup__form');
-
-    const togglePopupVisibility = () => {
-        if (popup.classList.contains('popup_opened'))
-            popup.classList.remove('popup_opened');
-        else
-            popup.classList.add('popup_opened');
-    };
-
-    closeBtn.addEventListener('click', () => {
-        togglePopupVisibility();
-    });
-
-    popupForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        profileTitle.textContent = popupPersonField.value;
-        profileSubTitle.textContent = popupPersonPositionField.value;
-        togglePopupVisibility();
-    });
+    const personPopup = document.querySelector('#personPopup');
+    const newPlacePopup = document.querySelector('#newPlacePopup');
 
 
     editBtn.addEventListener('click', () => {
-        popupPersonField.value = profileTitle.textContent;
-        popupPersonPositionField.value = profileSubTitle.textContent;
-        togglePopupVisibility();
+        personPopup.handleOpen();
     });
+
+    addCardBtn.addEventListener('click', () => {
+        newPlacePopup.handleOpen();
+    });
+
 
 };

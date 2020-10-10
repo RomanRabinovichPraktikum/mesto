@@ -1,4 +1,4 @@
-export const initializeCards = () => {
+export const initialize = () => {
     const initialCards = [
         {
             name: 'Архыз',
@@ -46,3 +46,4 @@ export const createNewCard = (cardData, position = 'tail') => {
 
     position === 'tail' ? cardsGrid.append(cardObj) : cardsGrid.prepend(cardObj);
 };
+
