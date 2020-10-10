@@ -30,49 +30,6 @@
 
             <section class="elements">
                 <ul class="grid">
-                    <li class="grid-item">
-                        <img class="grid-item__photo" src="./images/tver.jpg" alt="Тверь">
-                        <div class="grid-item__data">
-                            <h2 class="grid-item__title">Тверь</h2>
-                            <button type="button" aria-label="Лайкнуть" class="grid-item__like-btn"></button>
-                        </div>
-                    </li>
-                    <li class="grid-item">
-                        <img class="grid-item__photo" src="./images/moscow.jpg" alt="Москва">
-                        <div class="grid-item__data">
-                            <h2 class="grid-item__title">Москва</h2>
-                            <button type="button" aria-label="Лайкнуть" class="grid-item__like-btn"></button>
-                        </div>
-                    </li>
-                    <li class="grid-item">
-                        <img class="grid-item__photo" src="./images/peterburg.jpg" alt="С.-Петербург">
-                        <div class="grid-item__data">
-                            <h2 class="grid-item__title">Санкт-Петербург</h2>
-                            <button type="button" aria-label="Лайкнуть" class="grid-item__like-btn"></button>
-                        </div>
-                    </li>
-                    <li class="grid-item">
-                        <img class="grid-item__photo" src="./images/yaroslavl.jpg" alt="Ярославль">
-                        <div class="grid-item__data">
-                            <h2 class="grid-item__title">Ярославль</h2>
-                            <button type="button" aria-label="Лайкнуть" class="grid-item__like-btn"></button>
-                        </div>
-                    </li>
-                    <li class="grid-item">
-                        <img class="grid-item__photo" src="./images/ekaterinburg.jpg" alt="Екатеринбург">
-                        <div class="grid-item__data">
-                            <h2 class="grid-item__title">Екатеринбург</h2>
-                            <button type="button" aria-label="Лайкнуть" class="grid-item__like-btn"></button>
-                        </div>
-                    </li>
-                    <li class="grid-item">
-                        <img class="grid-item__photo" src="./images/kazan.jpg" alt="Казань">
-                        <div class="grid-item__data">
-                            <h2 class="grid-item__title">Казань</h2>
-                            <button type="button" aria-label="Лайкнуть" class="grid-item__like-btn"></button>
-                        </div>
-                    </li>
-
                 </ul>
             </section>
         </main>
@@ -96,6 +53,17 @@
             </form>
         </div>
     </div>
-    <script src="./scripts/script.js"></script>
+    <script src="./scripts/script.js" type="module"></script>
+
+    <template id="card-template">
+        <li class="grid-item">
+            <img class="grid-item__photo">
+            <div class="grid-item__data">
+                <h2 class="grid-item__title"></h2>
+                <button type="button" aria-label="Лайкнуть" class="grid-item__like-btn"></button>
+            </div>
+        </li>
+    </template>
+
 </body>
 </html>

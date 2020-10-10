@@ -1,4 +1,8 @@
+import * as Cards from './cards.js'
+
 window.onload = function() {
+    Cards.initializeCards();
+
     let editBtn = document.querySelector('.profile__edit-button');
 
     let profileTitle = document.querySelector('.profile__title');
