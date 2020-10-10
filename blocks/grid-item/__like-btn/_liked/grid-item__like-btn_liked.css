@@ -1,0 +1,8 @@
+.grid-item__like-btn_liked {
+    background: url(../../../../images/liked.svg) center no-repeat;
+}
+
+.grid-item__like-btn_liked:hover {
+    opacity: 1;
+    cursor: default;
+}

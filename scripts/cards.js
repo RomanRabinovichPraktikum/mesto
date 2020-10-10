@@ -39,11 +39,17 @@ export const createNewCard = (cardData, position = 'tail') => {
     const cardObj = cardTemplate.cloneNode(true);
     const cardImg = cardObj.querySelector('.grid-item__photo');
     const cardTitle = cardObj.querySelector('.grid-item__title');
+    const likeButton = cardObj.querySelector('.grid-item__like-btn');
 
     cardImg.src = cardData.link;
     cardImg.alt = cardData.name;
     cardTitle.textContent = cardData.name;
 
     position === 'tail' ? cardsGrid.append(cardObj) : cardsGrid.prepend(cardObj);
+
+    likeButton.addEventListener('click', e => {
+        const currentButton = e.currentTarget;
+        currentButton.classList.add('grid-item__like-btn_liked');
+    });
 };
 
