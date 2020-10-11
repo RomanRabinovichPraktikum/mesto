@@ -12,3 +12,7 @@
 .popup__text-field::placeholder {
     color: #c4c4c4;
 }
+
+.popup__text-field:required {
+    box-shadow: none;
+}

@@ -42,10 +42,10 @@
 @import url(../blocks/popup/__form/popup__form.css);
 @import url(../blocks/popup/__title/popup__title.css);
 @import url(../blocks/popup/__text-field/popup__text-field.css);
-@import url(../blocks/popup/__text-field/_role/popup__text-field_role_person.css);
-@import url(../blocks/popup/__text-field/_role/popup__text-field_role_position.css);
-@import url(../blocks/popup/__text-field/_role/popup__text-field_role_placename.css);
-@import url(../blocks/popup/__text-field/_role/popup__text-field_role_placepic.css);
+@import url(../blocks/popup/__text-field/_top/popup__text-field_top.css);
+@import url(../blocks/popup/__text-field/_bottom/popup__text-field_bottom.css);
+@import url(../blocks/popup/__text-field/_top/popup__text-field_top.css);
+@import url(../blocks/popup/__text-field/_bottom/popup__text-field_bottom.css);
 @import url(../blocks/popup/__submit-button/popup__submit-button.css);
 
 @import url(../blocks/popup/__place-data/popup__place-data.css);

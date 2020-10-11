@@ -9,7 +9,7 @@ export const initialize = () => {
 
     personPopup.textFieldsData = {
         placeholders: ['Исследователь', 'Дополнительно'],
-        classes: ['popup__text-field_role_person', 'popup__text-field_role_position'],
+        classes: ['popup__text-field_top', 'popup__text-field_bottom'],
         names: ['person', 'position']
     };
 
@@ -21,7 +21,7 @@ export const initialize = () => {
     newPlacePopup.submitButtonText = 'Создать';
     newPlacePopup.textFieldsData = {
         placeholders: ['Название места', 'Ссылка на картинку'],
-        classes: ['popup__text-field_role_placename', 'popup__text-field_role_placepic'],
+        classes: ['popup__text-field_top', 'popup__text-field_bottom'],
         names: ['placename', 'placepic']
     };
 
