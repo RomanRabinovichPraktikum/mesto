@@ -23,7 +23,7 @@ const createCard = (cardData) => {
 
 const handleLikeButtonClick = e => {
     const currentButton = e.currentTarget;
-    currentButton.classList.add('grid-item__like-btn_liked');
+    currentButton.classList.toggle('grid-item__like-btn_liked');
 };
 
 const handleTrashButtonClick = e => {
