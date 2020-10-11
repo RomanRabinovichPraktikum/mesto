@@ -110,7 +110,7 @@ const setupFormSubmission = popup => {
                 link: textFields[1].value
             };
 
-            Cards.createNewCard(cardData, 'head');
+            Cards.addCard(cardData, 'head');
         }
 
         togglePopupVisibility(popup.rootElement);
