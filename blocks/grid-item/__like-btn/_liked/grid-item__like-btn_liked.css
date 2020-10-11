@@ -4,5 +4,5 @@
 
 .grid-item__like-btn_liked:hover {
     opacity: 1;
-    cursor: default;
+    /* cursor: default; */
 }
