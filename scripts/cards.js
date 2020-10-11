@@ -1,3 +1,5 @@
+import * as PopupPlace from './popup-place.js';
+
 export const initialize = () => {
     const initialCards = [
         {
@@ -46,8 +48,6 @@ export const createNewCard = (cardData, position = 'tail') => {
     cardImg.alt = cardData.name;
     cardTitle.textContent = cardData.name;
 
-    position === 'tail' ? cardsGrid.append(cardObj) : cardsGrid.prepend(cardObj);
-
     likeButton.addEventListener('click', e => {
         const currentButton = e.currentTarget;
         currentButton.classList.add('grid-item__like-btn_liked');
@@ -57,5 +57,12 @@ export const createNewCard = (cardData, position = 'tail') => {
         const currentButton = e.currentTarget;
         currentButton.parentNode.remove();
     });
+
+    cardImg.addEventListener('click', e => {
+        const popupPlace = document.getElementById('popupPlace');
+        popupPlace.handleOpen(cardData);
+    });
+
+    position === 'tail' ? cardsGrid.append(cardObj) : cardsGrid.prepend(cardObj);
 };
 

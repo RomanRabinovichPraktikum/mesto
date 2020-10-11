@@ -1,0 +1,7 @@
+.popup__place-data {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    margin: auto auto;
+}

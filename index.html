@@ -50,27 +50,16 @@
         </li>
     </template>
 
-    <template id="popup-template">
+    <template id="popup-form-template">
         <div class="popup">
             <div class="popup__container">
                 <form class="popup__form" name="popupForm" method="post">
                     <h4 class="popup__title"></h4>
 
-                    <!-- название, placeholder и дополнительный класс поля меняются от вида попапа
-                    для персоны - name="person"  "popup__text-field_role_person"
-                    для нового места - name="placename"  "popup__text-field_role_placename",
-                    -->
+                    <input type="text" name="" placeholder="" class="popup__text-field">
 
                     <input type="text" name="" placeholder="" class="popup__text-field">
 
-                    <!-- название, placeholder и дополнительный класс поля меняются от вида попапа:
-                    для персоны - name="position"  "popup__text-field_role_position",
-                    для нового места - name="placepic"  "popup__text-field_role_placepic",
-                    -->
-                    <input type="text" name="" placeholder="" class="popup__text-field">
-
-                    <!--текст кнопки меняется в зависимости от вида попапа:
-                    для персоны - Сохранить, для нового места - Создать -->
                     <button type="submit" class="popup__submit-button"></button>
 
                     <button type="reset" class="popup__close-btn" aria-label="Закрыть"></button>
@@ -78,6 +67,19 @@
             </div>
         </div>
     </template>
+
+    <template id="popup-place-template">
+        <div class="popup">
+            <div class="popup__container">
+                <div class="popup__place-data">
+                    <img src="" class="popup__place-img" alt="">
+                    <p class="popup__place-label"></p>
+                    <button type="reset" class="popup__close-btn" aria-label="Закрыть"></button>
+                </div>
+            </div>
+        </div>
+    </template>
+
 
     <script src="./scripts/script.js" type="module"></script>
 </body>

@@ -1,7 +1,7 @@
 import * as Cards from './cards.js';
 
 export const initialize = () => {
-    const popupTemplate = document.getElementById('popup-template').content;
+    const popupTemplate = document.getElementById('popup-form-template').content;
 
     const personPopup = popupTemplate.cloneNode(true);
     personPopup.title = 'Редактировать профиль';
@@ -39,6 +39,9 @@ export const initialize = () => {
 };
 
 const setupPopup = popup => {
+    const popupContainer = popup.querySelector('.popup__container');
+    popupContainer.classList.add('popup__container_role_form');
+
     setupOpenHandler(popup);
     setupTitle(popup);
     setupTextFields(popup);

@@ -2,19 +2,3 @@
     position: fixed;
     z-index: 11;
 }
-
-@media screen and (min-width: 601px) {
-    .popup__container {
-        width: 430px;
-        top: calc((100vh - 330px)/2);
-        left: calc((100% - 430px)/2);
-    }
-}
-
-@media screen and (max-width: 600px) {
-    .popup__container {
-        width: 282px;
-        top: calc((100vh - 322px)/2);
-        left: calc((100vw - 282px)/2);
-    }
-}
