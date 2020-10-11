@@ -42,8 +42,12 @@ const setupCloseButton = popup => {
 };
 
 const togglePopupVisibility = rootElement => {
-    if (rootElement.classList.contains('popup_opened'))
+    if (rootElement.classList.contains('popup_opened')) {
+        rootElement.classList.add('popup_closed');
         rootElement.classList.remove('popup_opened');
-    else
+    }
+    else {
         rootElement.classList.add('popup_opened');
+        rootElement.classList.remove('popup_closed');
+    }
 };
