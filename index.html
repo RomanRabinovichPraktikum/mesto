@@ -50,36 +50,48 @@
         </li>
     </template>
 
-    <template id="popup-form-template">
-        <div class="popup popup_closed">
-            <div class="popup__container">
-                <form class="popup__form" name="popupForm" method="post">
-                    <h4 class="popup__title"></h4>
+    <div class="popup popup_type_person-form popup_closed">
+        <div class="popup__container popup__container_role_form">
+            <form class="popup__form" name="popupForm" method="post">
+                <h4 class="popup__title">Редактировать профиль</h4>
 
-                    <input type="text" name="" placeholder="" class="popup__text-field popup__text-field_top" required>
+                <input type="text" name="person" placeholder="ФИО персоны" class="popup__text-field popup__text-field_top" required>
 
-                    <input type="text" name="" placeholder="" class="popup__text-field popup__text-field_bottom" required>
+                <input type="text" name="position" placeholder="Дополнительная информация" class="popup__text-field popup__text-field_bottom" required>
 
-                    <button type="submit" class="popup__submit-button"></button>
+                <button type="submit" class="popup__submit-button">Сохранить</button>
 
-                    <button type="reset" class="popup__close-btn" aria-label="Закрыть"></button>
-                </form>
+                <button type="reset" class="popup__close-btn" aria-label="Закрыть"></button>
+            </form>
+        </div>
+    </div>
+
+    <div class="popup popup_type_place-form popup_closed">
+        <div class="popup__container popup__container_role_form">
+            <form class="popup__form" name="popupForm" method="post">
+                <h4 class="popup__title">Новое место</h4>
+
+                <input type="text" name="placename" placeholder="Название места" class="popup__text-field popup__text-field_top" required>
+
+                <input type="text" name="placepic" placeholder="Ссылка на картинку" class="popup__text-field popup__text-field_bottom" required>
+
+                <button type="submit" class="popup__submit-button">Создать</button>
+
+                <button type="reset" class="popup__close-btn" aria-label="Закрыть"></button>
+            </form>
+        </div>
+    </div>
+
+
+    <div class="popup popup_type_place popup_closed">
+        <div class="popup__container popup__container_role_place">
+            <div class="popup__place-data">
+                <img src="" class="popup__place-img" alt="">
+                <p class="popup__place-label"></p>
+                <button type="reset" class="popup__close-btn" aria-label="Закрыть"></button>
             </div>
         </div>
-    </template>
-
-    <template id="popup-place-template">
-        <div class="popup popup_closed">
-            <div class="popup__container">
-                <div class="popup__place-data">
-                    <img src="" class="popup__place-img" alt="">
-                    <p class="popup__place-label"></p>
-                    <button type="reset" class="popup__close-btn" aria-label="Закрыть"></button>
-                </div>
-            </div>
-        </div>
-    </template>
-
+    </div>
 
     <script src="./scripts/script.js" type="module"></script>
 </body>

@@ -1,5 +1,3 @@
-import * as PopupPlace from './popup-place.js';
-
 const createCard = (cardData) => {
     const cardTemplate = document.getElementById('card-template').content;
     const card = cardTemplate.cloneNode(true);
@@ -32,8 +30,8 @@ const handleTrashButtonClick = e => {
 };
 
 const handleCardImgClick = (cardData) => {
-    const popupPlace = document.getElementById('popupPlace');
-    popupPlace.handleOpen(cardData);
+    const popup = document.querySelector('.popup_type_place');
+    popup.handleOpen(cardData);
 };
 
 export const initialize = () => {
