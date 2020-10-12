@@ -14,7 +14,7 @@ const createCard = (cardData) => {
 
     trashButton.addEventListener('click', handleTrashButtonClick);
 
-    cardImg.addEventListener('click', handleCardImgClick.bind(null, cardData));
+    cardImg.addEventListener('click', () => handleCardImgClick(cardData));
 
     return card;
 };
