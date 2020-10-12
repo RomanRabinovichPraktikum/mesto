@@ -47,8 +47,7 @@ const fillPopupForm = popup => {
         textFields[1].value = profileSubTitle.textContent;
     }
     else if (isPlaceForm(popup)) {
-        textFields[0].value = '';
-        textFields[1].value = '';
+        popup.querySelector('form').reset();
     }
 };
 
