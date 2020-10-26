@@ -55,9 +55,13 @@
             <form class="popup__form" name="popupForm" method="post">
                 <h4 class="popup__title">Редактировать профиль</h4>
 
-                <input type="text" name="person" placeholder="ФИО персоны" class="popup__text-field popup__text-field_top" required>
+                <input type="text" id="person-input" name="person" placeholder="ФИО персоны" class="popup__text-field popup__text-field_top"
+                       required minlength="2" maxlength="40">
+                <span class='popup__input-error' id='person-input-error'></span>
 
-                <input type="text" name="position" placeholder="Дополнительная информация" class="popup__text-field popup__text-field_bottom" required>
+                <input type="text" id="position-input" name="position" placeholder="Дополнительная информация" class="popup__text-field popup__text-field_bottom"
+                       required minlength="2" maxlength="200">
+                <span class='popup__input-error' id='position-input-error'></span>
 
                 <button type="submit" class="popup__submit-button">Сохранить</button>
 
@@ -71,9 +75,14 @@
             <form class="popup__form" name="popupForm" method="post">
                 <h4 class="popup__title">Новое место</h4>
 
-                <input type="text" name="placename" placeholder="Название места" class="popup__text-field popup__text-field_top" required>
+                <input type="text" id="placename-input" name="placename" placeholder="Название" class="popup__text-field popup__text-field_top"
+                       required minlength="2" maxlength="30">
+                <span class='popup__input-error' id='placename-input-error'>Вы пропустили это поле.</span>
 
-                <input type="text" name="placepic" placeholder="Ссылка на картинку" class="popup__text-field popup__text-field_bottom" required>
+
+                <input type="url" id="placepic-input" name="placepic" placeholder="Ссылка на картинку" class="popup__text-field popup__text-field_bottom"
+                       required pattern="https{0,1}://.*">
+                <span class='popup__input-error' id='placepic-input-error'>Вы пропустили это поле.</span>
 
                 <button type="submit" class="popup__submit-button">Создать</button>
 
@@ -94,5 +103,6 @@
     </div>
 
     <script src="./scripts/script.js" type="module"></script>
+    <script src="./scripts/validate.js"></script>
 </body>
 </html>
