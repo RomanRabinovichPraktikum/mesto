@@ -5,10 +5,10 @@ const popupImg   = document.querySelector('.popup__place-img');
 const popupLabel = document.querySelector('.popup__place-label');
 const profileTitle = document.querySelector('.profile__title');
 const profileSubTitle = document.querySelector('.profile__subtitle');
-const personTextField =  document.querySelector('.popup__text-field-person');
-const positionTextField =  document.querySelector('.popup__text-field-position');
-const placenameTextField = document.querySelector('.popup__text-field-placename');
-const placepicTextField = document.querySelector('.popup__text-field-placepic');
+const personInputField =  document.querySelector('.popup__input-person');
+const positionInputField =  document.querySelector('.popup__input-position');
+const placenameInputField = document.querySelector('.popup__input-placename');
+const placepicInputField = document.querySelector('.popup__input-placepic');
 
 export const initialize = () => {
     const initializers = [
@@ -49,8 +49,8 @@ const openPlacePopup = (popup, data) => {
 };
 
 const openPersonFormPopup = popup => {
-    personTextField.value = profileTitle.textContent;
-    positionTextField.value = profileSubTitle.textContent;
+    personInputField.value = profileTitle.textContent;
+    positionInputField.value = profileSubTitle.textContent;
 
     togglePopupVisibility(popup);
 };
@@ -67,10 +67,9 @@ const handlePersonFormSubmit = (evt) => {
 
     const form = evt.currentTarget;
     const popup = form.parentNode.parentNode;
-    const textFields = form.querySelectorAll('.popup__text-field');
 
-    profileTitle.textContent = textFields[0].value;
-    profileSubTitle.textContent = textFields[1].value;
+    profileTitle.textContent = personInputField.value;
+    profileSubTitle.textContent = positionInputField.value;
 
     togglePopupVisibility(popup);
 };
@@ -82,8 +81,8 @@ const handlePlaceFormSubmit = (evt) => {
     const popup = form.parentNode.parentNode;
 
     const cardData = {
-        name: placenameTextField.value,
-        link: placepicTextField.value
+        name: placenameInputField.value,
+        link: placepicInputField.value
     };
 
     Cards.addCard(cardData, 'head');

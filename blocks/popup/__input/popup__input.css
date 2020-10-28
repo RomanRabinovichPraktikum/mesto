@@ -1,4 +1,4 @@
-.popup__text-field {
+.popup__input {
     border: none;
     outline: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -9,10 +9,10 @@
     padding-bottom: 13px;
 }
 
-.popup__text-field::placeholder {
+.popup__input::placeholder {
     color: #c4c4c4;
 }
 
-.popup__text-field:required {
+.popup__input:required {
     box-shadow: none;
 }
