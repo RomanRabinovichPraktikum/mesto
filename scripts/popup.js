@@ -107,9 +107,22 @@ const togglePopupVisibility = popup => {
 const openPopup = popup => {
     popup.classList.add('popup_opened');
     popup.classList.remove('popup_closed');
+    document.addEventListener("keyup", function(event) {
+        escPressHandler(event, popup)
+    });
 };
 
 const closePopup = popup => {
     popup.classList.add('popup_closed');
     popup.classList.remove('popup_opened');
+
+    document.removeEventListener("keyup", function(event) {
+        escPressHandler(event, popup)
+    });
 };
+
+function escPressHandler(event, popup) {
+    if (event.key === "Escape") {
+        closePopup(popup);
+    }
+}
