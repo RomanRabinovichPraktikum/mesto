@@ -1,6 +1,9 @@
 import * as Cards from './cards.js';
+import {checkInputValidity, toggleButtonState} from './validate.js';
 
 //что ж, в прошлом спринте рекомендовано вынести на глобальный уровень ряд DOM-элементов. Прислушался...
+const popupFormPerson = document.querySelector('.popup__form-profile');
+const popupFormPlace = document.querySelector('.popup__form-place');
 const popupImg   = document.querySelector('.popup__place-img');
 const popupLabel = document.querySelector('.popup__place-label');
 const profileTitle = document.querySelector('.profile__title');
@@ -38,10 +41,11 @@ export const initialize = () => {
 
         setupCloseButton(popup);
     });
+
+    setupOverlays();
 };
 
 const openPlacePopup = (popup, data) => {
-
     popupImg.src = data.link;
     popupLabel.textContent = data.name;
 
@@ -49,15 +53,20 @@ const openPlacePopup = (popup, data) => {
 };
 
 const openPersonFormPopup = popup => {
+    popupFormPerson.reset();
     personInputField.value = profileTitle.textContent;
     positionInputField.value = profileSubTitle.textContent;
+
+    [personInputField, positionInputField].forEach(inputElement => checkInputValidity(popupFormPerson, inputElement));
+    toggleButtonState([personInputField, positionInputField], popupFormPerson.querySelector('.popup__button'));
 
     togglePopupVisibility(popup);
 };
 
 const openPlaceFormPopup = popup => {
-    const form = popup.querySelector('form');
-    form.reset();
+    popupFormPlace.reset();
+
+    toggleButtonState([placenameInputField, placepicInputField], popupFormPlace.querySelector('.popup__button'));
 
     togglePopupVisibility(popup);
 };
@@ -95,6 +104,18 @@ const setupCloseButton = popup => {
     const closeBtn = popup.querySelector('.popup__close-btn');
 
     closeBtn.addEventListener('click', () => togglePopupVisibility(popup));
+};
+
+const setupOverlays = () => {
+    const overlays = Array.from(document.querySelectorAll(".popup"));
+    overlays.forEach(overlay => {
+        overlay.addEventListener('click', evt => {
+            if (evt.target === evt.currentTarget) {
+                const popup = document.querySelector(".popup_opened");
+                closePopup(popup);
+            }
+        });
+    });
 };
 
 const togglePopupVisibility = popup => {

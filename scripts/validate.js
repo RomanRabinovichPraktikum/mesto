@@ -12,7 +12,7 @@ const hideInputError = (formElement, inputElement) => {
     errorElement.textContent = '';
 };
 
-const checkInputValidity = (formElement, inputElement) => {
+export const checkInputValidity = (formElement, inputElement) => {
     if (!inputElement.validity.valid) {
         showInputError(formElement, inputElement, inputElement.validationMessage);
     } else {
@@ -23,8 +23,6 @@ const checkInputValidity = (formElement, inputElement) => {
 const setEventListeners = (formElement, params) => {
     const inputList = Array.from(formElement.querySelectorAll(params.inputSelector));
     const buttonElement = formElement.querySelector(params.submitButtonSelector);
-
-    toggleButtonState(inputList, buttonElement);
 
     inputList.forEach((inputElement) => {
         inputElement.addEventListener('input', function () {
@@ -51,7 +49,7 @@ const hasInvalidInput = (inputList) => {
     });
 };
 
-const toggleButtonState = (inputList, buttonElement) => {
+export const toggleButtonState = (inputList, buttonElement) => {
     if (hasInvalidInput(inputList)) {
         buttonElement.classList.add('popup__button_disabled');
         buttonElement.setAttribute("disabled", true);
