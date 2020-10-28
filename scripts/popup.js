@@ -1,25 +1,36 @@
 import * as Cards from './cards.js';
 
+//что ж, в прошлом спринте рекомендовано вынести на глобальный уровень ряд DOM-элементов. Прислушался...
+const popupImg   = document.querySelector('.popup__place-img');
+const popupLabel = document.querySelector('.popup__place-label');
+const profileTitle = document.querySelector('.profile__title');
+const profileSubTitle = document.querySelector('.profile__subtitle');
+const personTextField =  document.querySelector('.popup__text-field-person');
+const positionTextField =  document.querySelector('.popup__text-field-position');
+const placenameTextField = document.querySelector('.popup__text-field-placename');
+const placepicTextField = document.querySelector('.popup__text-field-placepic');
+
 export const initialize = () => {
     const initializers = [
         {
-            'selector' : '.popup_type_person-form',
+            'popup' : document.querySelector('.popup_type_person-form'),
             'submitHandler' : handlePersonFormSubmit,
             'openHandler' : openPersonFormPopup
         },
         {
-            'selector' : '.popup_type_place-form',
+            'popup' : document.querySelector('.popup_type_place-form'),
             'submitHandler' : handlePlaceFormSubmit,
             'openHandler' : openPlaceFormPopup
         },
         {
-            'selector' : '.popup_type_place',
+            'popup' : document.querySelector('.popup_type_place'),
             'openHandler' : openPlacePopup
         }
     ];
 
     initializers.forEach(initializer => {
-        const popup = document.querySelector(initializer.selector);
+        const popup = initializer.popup;
+
         popup.handleOpen = data => initializer.openHandler(popup, data);
 
         if (initializer.submitHandler)
@@ -30,8 +41,6 @@ export const initialize = () => {
 };
 
 const openPlacePopup = (popup, data) => {
-    const popupImg = popup.querySelector('.popup__place-img');
-    const popupLabel = popup.querySelector('.popup__place-label');
 
     popupImg.src = data.link;
     popupLabel.textContent = data.name;
@@ -40,13 +49,8 @@ const openPlacePopup = (popup, data) => {
 };
 
 const openPersonFormPopup = popup => {
-    const textFields = popup.querySelectorAll('.popup__text-field');
-
-    const profileTitle = document.querySelector('.profile__title');
-    const profileSubTitle = document.querySelector('.profile__subtitle');
-
-    textFields[0].value = profileTitle.textContent;
-    textFields[1].value = profileSubTitle.textContent;
+    personTextField.value = profileTitle.textContent;
+    positionTextField.value = profileSubTitle.textContent;
 
     togglePopupVisibility(popup);
 };
@@ -64,8 +68,6 @@ const handlePersonFormSubmit = (evt) => {
     const form = evt.currentTarget;
     const popup = form.parentNode.parentNode;
     const textFields = form.querySelectorAll('.popup__text-field');
-    const profileTitle = document.querySelector('.profile__title');
-    const profileSubTitle = document.querySelector('.profile__subtitle');
 
     profileTitle.textContent = textFields[0].value;
     profileSubTitle.textContent = textFields[1].value;
@@ -78,11 +80,10 @@ const handlePlaceFormSubmit = (evt) => {
 
     const form = evt.currentTarget;
     const popup = form.parentNode.parentNode;
-    const textFields = form.querySelectorAll('.popup__text-field');
 
     const cardData = {
-        name: textFields[0].value,
-        link: textFields[1].value
+        name: placenameTextField.value,
+        link: placepicTextField.value
     };
 
     Cards.addCard(cardData, 'head');
