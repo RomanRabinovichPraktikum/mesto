@@ -5,7 +5,7 @@ const showInputError = (formElement, inputElement, errorMessage) => {
     errorElement.classList.add('popup__error_visible');
 };
 
-const hideInputError = (formElement, inputElement) => {
+export const hideInputError = (formElement, inputElement) => {
     const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
     inputElement.classList.remove('popup__input_type_error');
     errorElement.classList.remove('popup__error_visible');

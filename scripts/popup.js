@@ -1,5 +1,5 @@
 import * as Cards from './cards.js';
-import {checkInputValidity, toggleButtonState} from './validate.js';
+import {checkInputValidity, toggleButtonState, hideInputError} from './validate.js';
 
 //что ж, в прошлом спринте рекомендовано вынести на глобальный уровень ряд DOM-элементов. Прислушался...
 const popupFormPerson = document.querySelector('.popup__form-profile');
@@ -66,6 +66,7 @@ const openPersonFormPopup = popup => {
 const openPlaceFormPopup = popup => {
     popupFormPlace.reset();
 
+    [placenameInputField, placepicInputField].forEach(inputElement => hideInputError(popupFormPlace, inputElement));
     toggleButtonState([placenameInputField, placepicInputField], popupFormPlace.querySelector('.popup__button'));
 
     togglePopupVisibility(popup);
