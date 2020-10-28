@@ -110,11 +110,11 @@ const setupOverlays = () => {
     const overlays = Array.from(document.querySelectorAll(".popup"));
     overlays.forEach(overlay => {
         overlay.addEventListener('click', evt => {
-            if (evt.target === evt.currentTarget) {
+            if (evt.target === evt.currentTarget|| evt.target.parentNode === evt.currentTarget) {
                 const popup = document.querySelector(".popup_opened");
                 closePopup(popup);
             }
-        });
+        }, false);
     });
 };
 
