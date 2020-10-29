@@ -57,8 +57,11 @@ const openPersonFormPopup = popup => {
     personInputField.value = profileTitle.textContent;
     positionInputField.value = profileSubTitle.textContent;
 
-    [personInputField, positionInputField].forEach(inputElement => checkInputValidity(popupFormPerson, inputElement));
-    toggleButtonState([personInputField, positionInputField], popupFormPerson.querySelector('.popup__button'));
+    [personInputField, positionInputField].forEach(inputElement =>
+        checkInputValidity(popupFormPerson, inputElement, popupFormPerson.params));
+
+    toggleButtonState([personInputField, positionInputField],
+        popupFormPerson.querySelector(popupFormPerson.params.submitButtonSelector), popupFormPerson.params);
 
     togglePopupVisibility(popup);
 };
@@ -66,8 +69,11 @@ const openPersonFormPopup = popup => {
 const openPlaceFormPopup = popup => {
     popupFormPlace.reset();
 
-    [placenameInputField, placepicInputField].forEach(inputElement => hideInputError(popupFormPlace, inputElement));
-    toggleButtonState([placenameInputField, placepicInputField], popupFormPlace.querySelector('.popup__button'));
+    [placenameInputField, placepicInputField].forEach(inputElement =>
+        hideInputError(popupFormPlace, inputElement, popupFormPlace.params));
+
+    toggleButtonState([placenameInputField, placepicInputField],
+        popupFormPlace.querySelector(popupFormPlace.params.submitButtonSelector), popupFormPlace.params);
 
     togglePopupVisibility(popup);
 };
@@ -128,14 +134,12 @@ const togglePopupVisibility = popup => {
 
 const openPopup = popup => {
     popup.classList.add('popup_opened');
-    popup.classList.remove('popup_closed');
     document.addEventListener("keyup", function(event) {
         escPressHandler(event, popup)
     });
 };
 
 const closePopup = popup => {
-    popup.classList.add('popup_closed');
     popup.classList.remove('popup_opened');
 
     document.removeEventListener("keyup", function(event) {

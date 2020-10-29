@@ -53,13 +53,13 @@ const enableValidation = (params) => {
     const formList = Array.from(document.querySelectorAll(params.formSelector));
 
     formList.forEach((formElement) => {
+        formElement.params = params;
         formElement.addEventListener('submit', function (evt) {
             evt.preventDefault();
         });
         setEventListeners(formElement, params);
     });
 };
-
 
 enableValidation({
     formSelector: '.popup__form',
@@ -69,3 +69,4 @@ enableValidation({
     inputErrorClass: 'popup__input_type_error',
     errorClass: 'popup__error_visible'
 });
+
