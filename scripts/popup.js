@@ -134,21 +134,18 @@ const togglePopupVisibility = popup => {
 
 const openPopup = popup => {
     popup.classList.add('popup_opened');
-    document.addEventListener("keyup", function(event) {
-        escPressHandler(event, popup)
-    });
+    document.addEventListener("keyup", escPressHandler);
 };
 
 const closePopup = popup => {
     popup.classList.remove('popup_opened');
-
-    document.removeEventListener("keyup", function(event) {
-        escPressHandler(event, popup)
-    });
+    document.removeEventListener("keyup", escPressHandler);
 };
 
-function escPressHandler(event, popup) {
+function escPressHandler(event) {
     if (event.key === "Escape") {
-        closePopup(popup);
+        const popup = document.querySelector('.popup_opened');
+        if (popup !== null)
+            closePopup(popup);
     }
 }
