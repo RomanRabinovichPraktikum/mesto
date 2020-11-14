@@ -1,6 +1,6 @@
 import placePopupObj from "./PlacePopup.js";
 
-export default class Card {
+class Card {
     constructor(data, selector) {
         this._selector = selector;
         this._name = data.name;
