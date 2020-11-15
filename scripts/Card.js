@@ -1,4 +1,4 @@
-import * as Popups from "./popup.js";
+import * as Popups from "./popups.js";
 
 export default class Card {
     constructor(data, selector) {

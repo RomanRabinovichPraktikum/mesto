@@ -1,5 +1,5 @@
 import Card from './Card.js';
-import * as Popups from './popup.js';
+import * as Popups from './popups.js';
 
 window.onload = function() {
     const initialCards = [
