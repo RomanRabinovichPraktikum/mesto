@@ -1,6 +1,6 @@
-import placePopupObj from "./PlacePopup.js";
+import * as Popups from "./popup.js";
 
-class Card {
+export default class Card {
     constructor(data, selector) {
         this._selector = selector;
         this._name = data.name;
@@ -49,8 +49,7 @@ class Card {
     }
 
     _handleCardImgClick(data) {
-        placePopupObj.setData(data);
-        placePopupObj.open();
+        Popups.popupPlaceOpener(data);
     };
 
 
@@ -60,12 +59,3 @@ class Card {
         return this._card;
     }
 }
-
-/*
-@param {strong} position - new card placement rule, can accept values 'head' or 'tail'.
- */
-export const appendCardToDom = (cardData, position = 'tail') => {
-    const cardsGrid = document.querySelector('.grid');
-    const card = new Card(cardData, '#card-template').getCard();
-    position === 'tail' ? cardsGrid.append(card) : cardsGrid.prepend(card);
-};
