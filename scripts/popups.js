@@ -1,5 +1,5 @@
 import FormValidator from "./FormValidator.js";
-import {appendCardToDOM} from "./index.js";
+import {addCardToDOM} from "./index.js";
 
 //откатил по рекомендации ревьювера к прежней "бесклассовой" версии
 export const popupPersonWithForm = document.querySelector('.popup_type_person-form');
@@ -50,14 +50,14 @@ export const popupPersonWithFormOpener = () => {
     formPerson.reset();
     personInputField.value = profileTitle.textContent;
     positionInputField.value = profileSubTitle.textContent;
-    formPerson.validator.checkInputList([personInputField, positionInputField]);
+    formPerson.validator.checkInputList();
 
     togglePopupVisibility(popupPersonWithForm);
 };
 
 export const popupPlaceWithFormOpener = () => {
     formPlace.reset();
-    formPlace.validator.checkInputList([placenameInputField, placepicInputField], true);
+    formPlace.validator.checkInputList(true);
     togglePopupVisibility(popupPlaceWithForm);
 };
 
@@ -78,7 +78,7 @@ const handlePlaceFormSubmit = (evt) => {
         link: placepicInputField.value
     };
 
-    appendCardToDOM(cardData, 'head');
+    addCardToDOM(cardData, 'head');
 
     togglePopupVisibility(popupPlaceWithForm);
 };

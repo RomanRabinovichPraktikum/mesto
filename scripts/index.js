@@ -1,5 +1,7 @@
 import Card from './Card.js';
-import * as Popups from './popups.js';
+import * as popupFuncs from './popups.js';
+
+const cardsGrid = document.querySelector('.grid');
 
 window.onload = function() {
     const initialCards = [
@@ -29,19 +31,19 @@ window.onload = function() {
         }
     ];
 
-    initialCards.forEach(elem => appendCardToDOM(elem, 'tail'));
+    initialCards.forEach(elem => addCardToDOM(elem, 'tail'));
 
-    Popups.initialize();
+    popupFuncs.initialize();
 
     const editBtn = document.querySelector('.profile__edit-button');
     const addCardBtn = document.querySelector('.profile__add-button');
 
     editBtn.addEventListener('click', () => {
-        Popups.popupPersonWithFormOpener();
+        popupFuncs.popupPersonWithFormOpener();
     });
 
     addCardBtn.addEventListener('click', () => {
-        Popups.popupPlaceWithFormOpener();
+        popupFuncs.popupPlaceWithFormOpener();
     });
 
 
@@ -51,8 +53,7 @@ window.onload = function() {
 /*
 @param {strong} position - new card placement rule, can accept values 'head' or 'tail'.
  */
-export const appendCardToDOM = (cardData, position = 'tail') => {
-    const cardsGrid = document.querySelector('.grid');
+export const addCardToDOM = (cardData, position = 'tail') => {
     const card = new Card(cardData, '#card-template').getCard();
     position === 'tail' ? cardsGrid.append(card) : cardsGrid.prepend(card);
 };

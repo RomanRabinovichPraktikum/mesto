@@ -1,4 +1,4 @@
-import * as Popups from "./popups.js";
+import * as popupFuncs from "./popups.js";
 
 export default class Card {
     constructor(data, selector) {
@@ -49,7 +49,7 @@ export default class Card {
     }
 
     _handleCardImgClick(data) {
-        Popups.popupPlaceOpener(data);
+        popupFuncs.popupPlaceOpener(data);
     };
 
 
