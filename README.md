@@ -1,7 +1,8 @@
-# Проект 7: Место (Яндекс.Практикум)
+# Проект 8: Место (Яндекс.Практикум)
 
-### Начала работы с ООП в VannillaJS
+### Продвинутый ООП в VannillaJS
 
 Использованы: CSS/Grid/Flex, HTML5, vanilla JS
+Организована сборка: WebPack + Babel
 
 URL: https://romanrabinovichpraktikum.github.io/mesto/
