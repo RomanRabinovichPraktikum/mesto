@@ -1,3 +1,5 @@
+import '../pages/index.css';
+
 import Card from './Card.js';
 import * as popupFuncs from './popups.js';
 
