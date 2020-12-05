@@ -1,10 +1,9 @@
-import * as popupFuncs from "./popups.js";
-
 export default class Card {
-    constructor(data, selector) {
+    constructor(data, selector, handleCardClick) {
         this._selector = selector;
         this._name = data.name;
         this._link = data.link;
+        this._handleCardClick = handleCardClick;
     }
 
     _getTemplate() {
@@ -21,13 +20,13 @@ export default class Card {
             .cloneNode(true);
 
         this._cardImg = this._card.querySelector('.grid-item__photo');
-        this._cardTitle = this._card.querySelector('.grid-item__title');
+        this._name = this._card.querySelector('.grid-item__title');
         this._likeButton = this._card.querySelector('.grid-item__like-btn');
         this._trashButton = this._card.querySelector('.grid-item__trash-btn');
 
         this._cardImg.src = this._link;
         this._cardImg.alt = this._name;
-        this._cardTitle.textContent = this._name;
+        this._name.textContent = this._name;
 
         return this._card;
     }
@@ -35,7 +34,7 @@ export default class Card {
     _setEventListeners() {
         this._likeButton.addEventListener('click', this._handleLikeButtonClick);
         this._trashButton.addEventListener('click', this._handleTrashButtonClick);
-        this._cardImg.addEventListener('click', () => this._handleCardImgClick({name: this._name, link: this._link}));
+        this._cardImg.addEventListener('click', () => this._handleCardClick({name: this._name, link: this._link}));
     }
 
     _handleLikeButtonClick(e) {
@@ -47,11 +46,6 @@ export default class Card {
         const currentButton = e.currentTarget;
         currentButton.parentNode.remove();
     }
-
-    _handleCardImgClick(data) {
-        popupFuncs.popupPlaceOpener(data);
-    };
-
 
     getCard() {
         this._generateCard();
