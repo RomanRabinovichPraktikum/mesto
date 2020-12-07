@@ -12,29 +12,31 @@ import {
     positionInputElement,
     profileEditButtonElement,
     addCardButtonElement,
+    cardTemplateSelector,
     profileTitleSelector,
     profileDescriptionSelector,
     personFormPopupSelector,
     placeFormPopupSelector,
+    placePopupSelector,
     submitButtonSelector,
-    profileFormSelector,
-    placeFormSelector,
+    profileFormElement,
+    placeFormElement,
     validationParams
 } from './constants.js';
 
 const userInfo = new UserInfo(profileTitleSelector, profileDescriptionSelector);
 
 const personFormPopup = new PopupWithForm(personFormPopupSelector, handlePersonFormSubmit);
-const editProfileFormValidator = new FormValidator(validationParams, profileFormSelector);
+const editProfileFormValidator = new FormValidator(validationParams, profileFormElement);
 personFormPopup.setEventListeners();
 editProfileFormValidator.enableValidation();
 
 const placeFormPopup = new PopupWithForm(placeFormPopupSelector, handlePlaceFormSubmit);
-const placeFormValidator = new FormValidator(validationParams, placeFormSelector);
+const placeFormValidator = new FormValidator(validationParams, placeFormElement);
 placeFormPopup.setEventListeners();
 placeFormValidator.enableValidation();
 
-const placePopup = new PopupWithImage();
+const placePopup = new PopupWithImage(placePopupSelector);
 placePopup.setEventListeners();
 
 profileEditButtonElement.addEventListener('click', () => {
@@ -64,7 +66,7 @@ function handlePlaceFormSubmit (cardData) {
 }
 
 function createCard(data){
-    const card = new Card(data, selector, handleCardClick);
+    const card = new Card(data, cardTemplateSelector, handleCardClick);
     const cardElement = card.getCard();
     return cardElement;
 }

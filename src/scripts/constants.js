@@ -1,9 +1,11 @@
+export const cardTemplateSelector = "#card-template";
 export const profileTitleSelector = ".profile__title";
 export const profileDescriptionSelector = ".profile__subtitle";
 export const personInputSelector = ".popup__input-person";
 export const positionInputSelector = ".popup__input-position";
 export const personFormPopupSelector = ".popup_type_person-form";
 export const placeFormPopupSelector = ".popup_type_place-form";
+export const placePopupSelector = ".popup_type_place";
 export const submitButtonSelector = ".popup__button";
 export const profileFormSelector = ".popup__form-profile";
 export const placeFormSelector = ".popup__form-place";
@@ -15,6 +17,9 @@ export const profileTitleElement = document.querySelector(profileTitleSelector);
 export const profileDescriptionElement = document.querySelector(profileDescriptionSelector);
 export const personInputElement = document.querySelector(personInputSelector);
 export const positionInputElement = document.querySelector(positionInputSelector);
+export const profileFormElement = document.querySelector(profileFormSelector);
+export const placeFormElement = document.querySelector(placeFormSelector);
+
 export const profileEditButtonElement = document.querySelector(profileEditButtonSelector);
 export const addCardButtonElement = document.querySelector(addCardButtonSelector);
 
