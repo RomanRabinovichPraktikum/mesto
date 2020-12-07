@@ -1,61 +1,84 @@
 import '../pages/index.css';
+import Card from '../components/Card.js';
+import FormValidator from '../components/FormValidator.js';
+import Section from '../components/Section.js';
+import PopupWithImage from '../components/PopupWithImage.js';
+import PopupWithForm from '../components/PopupWithForm.js';
+import UserInfo from '../components/UserInfo.js';
+import initialCards from './initialCards.js';
+import {
+    cardsContainer,
+    personInputElement,
+    positionInputElement,
+    profileEditButtonElement,
+    addCardButtonElement,
+    profileTitleSelector,
+    profileDescriptionSelector,
+    personFormPopupSelector,
+    placeFormPopupSelector,
+    submitButtonSelector,
+    profileFormSelector,
+    placeFormSelector,
+    validationParams
+} from './constants.js';
 
-import Card from './Card.js';
-import * as popupFuncs from './popups.js';
+const userInfo = new UserInfo(profileTitleSelector, profileDescriptionSelector);
 
-const cardsGrid = document.querySelector('.grid');
+const personFormPopup = new PopupWithForm(personFormPopupSelector, handlePersonFormSubmit);
+const editProfileFormValidator = new FormValidator(validationParams, profileFormSelector);
+personFormPopup.setEventListeners();
+editProfileFormValidator.enableValidation();
 
-window.onload = function() {
-    const initialCards = [
-        {
-            name: 'Архыз',
-            link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-        },
-        {
-            name: 'Челябинская область',
-            link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-        },
-        {
-            name: 'Иваново',
-            link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-        },
-        {
-            name: 'Камчатка',
-            link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-        },
-        {
-            name: 'Холмогорский район',
-            link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-        },
-        {
-            name: 'Байкал',
-            link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-        }
-    ];
+const placeFormPopup = new PopupWithForm(placeFormPopupSelector, handlePlaceFormSubmit);
+const placeFormValidator = new FormValidator(validationParams, placeFormSelector);
+placeFormPopup.setEventListeners();
+placeFormValidator.enableValidation();
 
-    initialCards.forEach(elem => addCardToDOM(elem, 'tail'));
+const placePopup = new PopupWithImage();
+placePopup.setEventListeners();
 
-    popupFuncs.initialize();
+profileEditButtonElement.addEventListener('click', () => {
+    personFormPopup.open();
+    editProfileFormValidator.checkInputList();
 
-    const editBtn = document.querySelector('.profile__edit-button');
-    const addCardBtn = document.querySelector('.profile__add-button');
+    const profileDataFromPage = userInfo.getUserInfo();
+    personInputElement.value = profileDataFromPage.title;
+    positionInputElement.value = profileDataFromPage.description;
+});
 
-    editBtn.addEventListener('click', () => {
-        popupFuncs.popupPersonWithFormOpener();
-    });
+addCardButtonElement.addEventListener('click', () => {
+    placeFormPopup.open();
+    placeFormValidator.checkInputList(true);
+});
 
-    addCardBtn.addEventListener('click', () => {
-        popupFuncs.popupPlaceWithFormOpener();
-    });
+function handlePersonFormSubmit() {
+    userInfo.setUserInfo(personInputElement, positionInputElement);
+    this.close();
+}
 
+function handlePlaceFormSubmit (cardData) {
+    const newCard = createCard(cardData);
+    const submitButtonElement = this._element.querySelector(submitButtonSelector);
+    submitButtonElement.classList.add(validationParams.inactiveButtonClass);
+    cardsContainer.prepend(newCard);
+}
 
+function createCard(data){
+    const card = new Card(data, selector, handleCardClick);
+    const cardElement = card.getCard();
+    return cardElement;
+}
 
-};
+function handleCardClick(link, name){
+    placePopup.open(link, name);
+}
 
-/*
-@param {strong} position - new card placement rule, can accept values 'head' or 'tail'.
- */
-export const addCardToDOM = (cardData, position = 'tail') => {
-    const card = new Card(cardData, '#card-template').getCard();
-    position === 'tail' ? cardsGrid.append(card) : cardsGrid.prepend(card);
-};
+const cardsList = new Section({
+    items: initialCards,
+    renderer: (card) => {
+        const element = createCard(card)
+        cardsList.addItem(element);
+    },
+}, cardsContainer);
+
+cardsList.renderItems();

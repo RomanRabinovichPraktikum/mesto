@@ -1,15 +1,20 @@
+import {positionInputSelector} from "../scripts/constants";
+
 export default class UserInfo {
-    constructor(nameSelector, aboutSelector) {
-        this._nameSelector = nameSelector;
-        this._aboutSelector = aboutSelector;
+    constructor(profileTitleSelector, profileDescriptionSelector) {
+        this._profileTitleElement = document.querySelector(profileTitleSelector);
+        this._profileDescriptionElement = document.querySelector(profileDescriptionSelector);
     }
 
     getUserInfo() {
-
+        return {
+            title: this._profileTitleElement.textContent,
+            description: this._profileDescriptionElement.textContent
+        };
     }
 
-    setUserInfo({name, about}) {
-
+    setUserInfo(profileInputSelector, positionInputSelector) {
+        this._profileTitleElement.textContent = profileInputSelector.value;
+        this._profileDescriptionElement.textContent = positionInputSelector.value;
     }
-
 }
