@@ -40,12 +40,11 @@ const placePopup = new PopupWithImage(placePopupSelector);
 placePopup.setEventListeners();
 
 profileEditButtonElement.addEventListener('click', () => {
-    personFormPopup.open();
-    editProfileFormValidator.checkInputList();
-
     const profileDataFromPage = userInfo.getUserInfo();
     personInputElement.value = profileDataFromPage.title;
     positionInputElement.value = profileDataFromPage.description;
+    editProfileFormValidator.checkInputList();
+    personFormPopup.open();
 });
 
 addCardButtonElement.addEventListener('click', () => {
@@ -59,7 +58,8 @@ function handlePersonFormSubmit() {
 }
 
 function handlePlaceFormSubmit (cardData) {
-    const newCard = createCard(cardData);
+    console.log(cardData);
+    const newCard = createCard({name: cardData.placename, link: cardData.placepic});
     const submitButtonElement = this._element.querySelector(submitButtonSelector);
     submitButtonElement.classList.add(validationParams.inactiveButtonClass);
     cardsContainer.prepend(newCard);
