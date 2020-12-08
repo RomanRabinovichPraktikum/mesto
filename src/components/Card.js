@@ -4,6 +4,7 @@ export default class Card {
         this._name = data.name;
         this._link = data.link;
         this._handleCardClick = handleCardClick;
+
     }
 
     _getTemplate() {
@@ -20,13 +21,13 @@ export default class Card {
             .cloneNode(true);
 
         this._cardImg = this._card.querySelector('.grid-item__photo');
-        this._name = this._card.querySelector('.grid-item__title');
+        this._nameElement = this._card.querySelector('.grid-item__title');
         this._likeButton = this._card.querySelector('.grid-item__like-btn');
         this._trashButton = this._card.querySelector('.grid-item__trash-btn');
 
         this._cardImg.src = this._link;
         this._cardImg.alt = this._name;
-        this._name.textContent = this._name;
+        this._nameElement.textContent = this._name;
 
         return this._card;
     }
