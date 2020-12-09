@@ -44,8 +44,7 @@ export default class Card {
     };
 
     _handleTrashButtonClick(e) {
-        const currentButton = e.currentTarget;
-        currentButton.parentNode.remove();
+        e.currentTarget.closest(".grid-item").remove();
     }
 
     getCard() {
