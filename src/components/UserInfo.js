@@ -1,5 +1,3 @@
-import {positionInputSelector} from "../scripts/constants";
-
 export default class UserInfo {
     constructor(profileTitleSelector, profileDescriptionSelector) {
         this._profileTitleElement = document.querySelector(profileTitleSelector);
