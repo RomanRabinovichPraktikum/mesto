@@ -58,7 +58,6 @@ function handlePersonFormSubmit() {
 }
 
 function handlePlaceFormSubmit (cardData) {
-    console.log(cardData);
     const newCard = createCard({name: cardData.placename, link: cardData.placepic});
     const submitButtonElement = this._element.querySelector(submitButtonSelector);
     submitButtonElement.classList.add(validationParams.inactiveButtonClass);
