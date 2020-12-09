@@ -5,7 +5,7 @@ import Section from '../components/Section.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
-import initialCards from './initialCards.js';
+import initialCards from '../scripts/initialCards.js';
 import {
     cardsContainer,
     personInputElement,
@@ -22,7 +22,7 @@ import {
     profileFormElement,
     placeFormElement,
     validationParams
-} from './constants.js';
+} from '../scripts/constants.js';
 
 const userInfo = new UserInfo(profileTitleSelector, profileDescriptionSelector);
 
