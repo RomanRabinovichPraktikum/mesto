@@ -54,7 +54,14 @@ export default class Api {
         .catch(err => console.log(err));
     }
 
-
+    deleteCard(data) {
+        return fetch(`${this._baseUrl}/cards/${data._id}`, {
+            method: 'DELETE',
+            headers: this._headers
+        })
+        .then(this._handleResponse)
+        .catch(err => console.log(err));
+    }
 
     getInitialCards() {
         return fetch(`${this._baseUrl}/cards`, {
