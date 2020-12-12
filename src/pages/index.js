@@ -6,7 +6,7 @@ import Section from '../components/Section.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
-import initialCards from '../scripts/initialCards.js';
+
 import {
     cardsContainer,
     personInputElement,
@@ -26,6 +26,11 @@ import {
     validationParams
 } from '../scripts/constants.js';
 
+const cardsList = new Section((card) => {
+        const element = createCard(card)
+        cardsList.addItem(element);
+}, cardsContainer);
+
 const api = new Api({
     baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-18',
     headers: {
@@ -37,8 +42,11 @@ const api = new Api({
 const userInfo = new UserInfo(profileTitleSelector, profileDescriptionSelector, profileAvatarSelector);
 
 api.getUserInfo()
-    .then(data => userInfo.setUserInfo(data))
-    .catch(err => console.log(err));
+    .then(data => userInfo.setUserInfo(data));
+
+api.getInitialCards().then(data => {
+    cardsList.renderItems(data)
+});
 
 const personFormPopup = new PopupWithForm(personFormPopupSelector, handlePersonFormSubmit);
 const editProfileFormValidator = new FormValidator(validationParams, profileFormElement);
@@ -66,9 +74,17 @@ addCardButtonElement.addEventListener('click', () => {
     placeFormValidator.checkInputList(true);
 });
 
-function handlePersonFormSubmit() {
-    userInfo.setUserInfo(personInputElement, positionInputElement);
-    this.close();
+function handlePersonFormSubmit(data) {
+    this.updateSubmitButtonText(true);
+
+    api.setUserInfo({name: data.person, about: data.position})
+        .then((res) => {
+            userInfo.setUserInfo(res);
+        })
+        .finally(() => {
+            this.updateSubmitButtonText(false);
+            this.close();
+        });
 }
 
 function handlePlaceFormSubmit (cardData) {
@@ -88,12 +104,3 @@ function handleCardClick(link, name){
     placePopup.open(link, name);
 }
 
-const cardsList = new Section({
-    items: initialCards,
-    renderer: (card) => {
-        const element = createCard(card)
-        cardsList.addItem(element);
-    },
-}, cardsContainer);
-
-cardsList.renderItems();
