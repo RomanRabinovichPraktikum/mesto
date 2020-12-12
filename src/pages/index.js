@@ -87,11 +87,21 @@ function handlePersonFormSubmit(data) {
         });
 }
 
-function handlePlaceFormSubmit (cardData) {
-    const newCard = createCard({name: cardData.placename, link: cardData.placepic});
-    const submitButtonElement = this._element.querySelector(submitButtonSelector);
-    submitButtonElement.classList.add(validationParams.inactiveButtonClass);
-    cardsContainer.prepend(newCard);
+function handlePlaceFormSubmit(cardData) {
+    this.updateSubmitButtonText(true);
+
+    api.addNewCard({name: cardData.placename, link: cardData.placepic})
+        .then((res) => {
+            const newCard = createCard({name: cardData.placename, link: cardData.placepic});
+            const submitButtonElement = this._element.querySelector(submitButtonSelector);
+            submitButtonElement.classList.add(validationParams.inactiveButtonClass);
+            cardsContainer.prepend(newCard);
+        })
+        .finally(() => {
+            this.updateSubmitButtonText(false);
+            this.close();
+        });
+
 }
 
 function createCard(data){

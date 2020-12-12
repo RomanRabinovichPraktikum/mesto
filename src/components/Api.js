@@ -10,10 +10,10 @@ export default class Api {
 
     /*
     +получить список всех карточек в виде массива (GET)
-    добавить карточку (POST)
+    +добавить карточку (POST)
     удалить карточку (DELETE)
-    получить данные пользователя (GET)
-    заменить данные пользователя (PATCH)
+    +получить данные пользователя (GET)
+    +заменить данные пользователя (PATCH)
     заменить аватар (PATCH)
     “залайкать” карточку (PUT)
     удалить лайк карточки (DELETE)
@@ -41,12 +41,28 @@ export default class Api {
         .catch(err => console.log(err));
     }
 
+    addNewCard(data) {
+        return fetch(`${this._baseUrl}/cards`, {
+            method: 'POST',
+            headers: this._headers,
+            body: JSON.stringify({
+                name: data.name,
+                link: data.link
+            })
+        })
+        .then(this._handleResponse)
+        .catch(err => console.log(err));
+    }
+
+
 
     getInitialCards() {
         return fetch(`${this._baseUrl}/cards`, {
             method: 'GET',
             headers: this._headers
-        }).then(this._handleResponse);
+        })
+        .then(this._handleResponse)
+        .catch(err => console.log(err));
     }
 
     _handleResponse(res) {
