@@ -1,6 +1,7 @@
 export const cardTemplateSelector = "#card-template";
 export const profileTitleSelector = ".profile__title";
 export const profileDescriptionSelector = ".profile__subtitle";
+export const profileAvatarSelector = ".profile__avatar";
 export const personInputSelector = ".popup__input-person";
 export const positionInputSelector = ".popup__input-position";
 export const personFormPopupSelector = ".popup_type_person-form";

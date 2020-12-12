@@ -1,4 +1,5 @@
 import '../pages/index.css';
+import Api from "../components/Api";
 import Card from '../components/Card.js';
 import FormValidator from '../components/FormValidator.js';
 import Section from '../components/Section.js';
@@ -15,6 +16,7 @@ import {
     cardTemplateSelector,
     profileTitleSelector,
     profileDescriptionSelector,
+    profileAvatarSelector,
     personFormPopupSelector,
     placeFormPopupSelector,
     placePopupSelector,
@@ -24,7 +26,19 @@ import {
     validationParams
 } from '../scripts/constants.js';
 
-const userInfo = new UserInfo(profileTitleSelector, profileDescriptionSelector);
+const api = new Api({
+    baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-18',
+    headers: {
+        authorization: 'df22a34d-0827-4604-b3c3-15999daac8f2',
+        'Content-Type': 'application/json'
+    }
+});
+
+const userInfo = new UserInfo(profileTitleSelector, profileDescriptionSelector, profileAvatarSelector);
+
+api.getUserInfo()
+    .then(data => userInfo.setUserInfo(data))
+    .catch(err => console.log(err));
 
 const personFormPopup = new PopupWithForm(personFormPopupSelector, handlePersonFormSubmit);
 const editProfileFormValidator = new FormValidator(validationParams, profileFormElement);
