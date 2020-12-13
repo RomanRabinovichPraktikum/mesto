@@ -154,7 +154,7 @@ function handleConfirmFormSubmit(cardData) {
 
 function createCard(data) {
     const card = new Card(data, cardTemplateSelector, currentUserId,
-        {handleCardClick, handleTrashButtonClick});
+        {handleCardClick, handleTrashButtonClick, handleLike, handleDislike});
     const cardElement = card.getCard();
     return cardElement;
 }
@@ -167,4 +167,20 @@ function handleTrashButtonClick(data) {
     confirmPopup.open(data);
 }
 
+function handleLike(data) {
+    const card = this;
 
+    api.likeCard(data)
+        .then((data) => {
+            card.updateData(data);
+        });
+}
+
+function handleDislike(data) {
+    const card = this;
+
+    api.dislikeCard(data)
+        .then((data) => {
+            card.updateData(data);
+        });
+}

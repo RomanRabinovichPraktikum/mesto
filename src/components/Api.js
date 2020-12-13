@@ -15,8 +15,8 @@ export default class Api {
     +получить данные пользователя (GET)
     +заменить данные пользователя (PATCH)
     +заменить аватар (PATCH)
-    “залайкать” карточку (PUT)
-    удалить лайк карточки (DELETE)
+    +“залайкать” карточку (PUT)
+    +удалить лайк карточки (DELETE)
      */
 
     getUserInfo() {
@@ -79,6 +79,24 @@ export default class Api {
             body: JSON.stringify({
                 avatar: data.avatar
             })
+        })
+        .then(this._handleResponse)
+        .catch(err => console.log(err));
+    }
+
+    likeCard(data) {
+        return fetch(`${this._baseUrl}/cards/likes/${data._id}`, {
+            method: 'PUT',
+            headers: this._headers,
+        })
+        .then(this._handleResponse)
+        .catch(err => console.log(err));
+    }
+
+    dislikeCard(data) {
+        return fetch(`${this._baseUrl}/cards/likes/${data._id}`, {
+            method: 'DELETE',
+            headers: this._headers,
         })
         .then(this._handleResponse)
         .catch(err => console.log(err));
