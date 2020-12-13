@@ -102,18 +102,27 @@ addCardButtonElement.addEventListener('click', () => {
 function handlePersonFormSubmit(data) {
     this.updateSubmitButtonText(true);
 
-    api.updateUserAvatar(data)
+    api.setUserInfo({name: data.person, about: data.position})
         .then((res) => {
+            userInfo.setUserInfo(res);
         })
         .finally(() => {
-            avatarFormPopup.updateSubmitButtonText(false);
-            avatarFormPopup.close();
+            personFormPopup.updateSubmitButtonText(false);
+            personFormPopup.close();
         });
 }
 
 function handleAvatarFormSubmit(data) {
     this.updateSubmitButtonText(true);
 
+    api.updateUserAvatar(data)
+        .then((res) => {
+            userInfo.setUserInfo(res);
+        })
+        .finally(() => {
+            avatarFormPopup.updateSubmitButtonText(false);
+            avatarFormPopup.close();
+        });
 }
 
 function handlePlaceFormSubmit(cardData) {
