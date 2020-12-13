@@ -47,7 +47,10 @@
             <img src="<%=require('./images/trash.svg')%>" class="grid-item__trash-btn" alt="Удалить">
             <div class="grid-item__data">
                 <h2 class="grid-item__title"></h2>
-                <button type="button" aria-label="Лайкнуть" class="grid-item__like-btn"></button>
+                <div class="grid-item__like-container">
+                    <button type="button" aria-label="Лайкнуть" class="grid-item__like-btn"></button>
+                    <span class="grid-item__like-count">0</span>
+                </div>
             </div>
         </li>
     </template>

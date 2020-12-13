@@ -1,0 +1,8 @@
+.grid-item__like-container {
+    left: 250px;
+    max-width: 30px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
