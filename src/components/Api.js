@@ -72,6 +72,18 @@ export default class Api {
         .catch(err => console.log(err));
     }
 
+    updateUserAvatar(data) {
+        return fetch(`${this._baseUrl}/users/me/avatar`, {
+            method: 'PATCH',
+            headers: this._headers,
+            body: JSON.stringify({
+                avatar: data.avatar
+            })
+        })
+        .then(this._handleResponse)
+        .catch(err => console.log(err));
+    }
+
     _handleResponse(res) {
         if (!res.ok) {
             return Promise.reject(`Ошибка: ${res.status}`);

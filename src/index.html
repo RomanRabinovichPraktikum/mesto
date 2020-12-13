@@ -93,6 +93,21 @@
         </div>
     </div>
 
+    <div class="popup popup_type_avatar-form popup_closed">
+        <div class="popup__container popup__container_role_form">
+            <form class="popup__form popup__form-avatar" name="popupForm" method="post"  novalidate>
+                <h4 class="popup__title">Обновить аватар</h4>
+                <input type="url" id="avatar-input" name="avatar" placeholder="Ссылка на аватар" class="popup__input popup__input_bottom popup__input-avatar"
+                       required pattern="https{0,1}://.*">
+                <span class='popup__error' id='avatar-input-error'></span>
+
+                <button type="submit" class="popup__button">Сохранить</button>
+
+                <button type="reset" class="popup__close-btn" aria-label="Закрыть"></button>
+            </form>
+        </div>
+    </div>
+
     <div class="popup popup_type_confirm-form popup_closed">
         <div class="popup__container popup__container_role_form">
             <form class="popup__form popup__form-confirm" name="popupConfirm" method="post" novalidate>

@@ -12,16 +12,20 @@ import {
     cardsContainer,
     personInputElement,
     positionInputElement,
+    avatarInputElement,
     profileEditButtonElement,
+    profileAvatarEditButtonElement,
     addCardButtonElement,
     cardTemplateSelector,
     profileTitleSelector,
     profileDescriptionSelector,
     profileAvatarSelector,
+    avatarFormPopupSelector,
     personFormPopupSelector,
     placeFormPopupSelector,
     placePopupSelector,
     submitButtonSelector,
+    avatarFormElement,
     profileFormElement,
     placeFormElement,
     validationParams
@@ -59,6 +63,11 @@ const editProfileFormValidator = new FormValidator(validationParams, profileForm
 personFormPopup.setEventListeners();
 editProfileFormValidator.enableValidation();
 
+const avatarFormPopup = new PopupWithForm(avatarFormPopupSelector, handleAvatarFormSubmit);
+const editAvatarFormValidator = new FormValidator(validationParams, avatarFormElement);
+avatarFormPopup.setEventListeners();
+editAvatarFormValidator.enableValidation();
+
 const placeFormPopup = new PopupWithForm(placeFormPopupSelector, handlePlaceFormSubmit);
 const placeFormValidator = new FormValidator(validationParams, placeFormElement);
 placeFormPopup.setEventListeners();
@@ -78,6 +87,13 @@ profileEditButtonElement.addEventListener('click', () => {
     personFormPopup.open();
 });
 
+profileAvatarEditButtonElement.addEventListener('click', () => {
+    const profileDataFromPage = userInfo.getUserInfo();
+    avatarInputElement.value = profileDataFromPage.avatar;
+    editProfileFormValidator.checkInputList();
+    avatarFormPopup.open();
+});
+
 addCardButtonElement.addEventListener('click', () => {
     placeFormPopup.open();
     placeFormValidator.checkInputList(true);
@@ -86,14 +102,18 @@ addCardButtonElement.addEventListener('click', () => {
 function handlePersonFormSubmit(data) {
     this.updateSubmitButtonText(true);
 
-    api.setUserInfo({name: data.person, about: data.position})
+    api.updateUserAvatar(data)
         .then((res) => {
-            userInfo.setUserInfo(res);
         })
         .finally(() => {
-            personFormPopup.updateSubmitButtonText(false);
-            personFormPopup.close();
+            avatarFormPopup.updateSubmitButtonText(false);
+            avatarFormPopup.close();
         });
+}
+
+function handleAvatarFormSubmit(data) {
+    this.updateSubmitButtonText(true);
+
 }
 
 function handlePlaceFormSubmit(cardData) {
