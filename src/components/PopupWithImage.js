@@ -8,11 +8,11 @@ export default class PopupWithImage extends Popup {
         this._popupLabel = this._element.querySelector('.popup__place-label');
     }
 
-    open({link, name}) {
+    open(data) {
         super.open();
 
-        this._popupImg.src = link;
-        this._popupImg.alt = name;
-        this._popupLabel.textContent = name;
+        this._popupImg.src = data.link;
+        this._popupImg.alt = data.name;
+        this._popupLabel.textContent = data.name;
     }
 }

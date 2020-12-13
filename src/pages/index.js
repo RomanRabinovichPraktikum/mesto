@@ -5,6 +5,7 @@ import FormValidator from '../components/FormValidator.js';
 import Section from '../components/Section.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
+import PopupWithConfirm from '../components/PopupWithConfirm.js';
 import UserInfo from '../components/UserInfo.js';
 
 import {
@@ -25,9 +26,10 @@ import {
     placeFormElement,
     validationParams
 } from '../scripts/constants.js';
+import {confirmFormPopupSelector} from "../scripts/constants";
 
 const cardsList = new Section((card) => {
-        const element = createCard(card)
+        const element = createCard(card);
         cardsList.addItem(element);
 }, cardsContainer);
 
@@ -39,10 +41,14 @@ const api = new Api({
     }
 });
 
+let currentUserId = null;
 const userInfo = new UserInfo(profileTitleSelector, profileDescriptionSelector, profileAvatarSelector);
 
 api.getUserInfo()
-    .then(data => userInfo.setUserInfo(data));
+    .then(data => {
+        currentUserId = data._id;
+        userInfo.setUserInfo(data)
+    });
 
 api.getInitialCards().then(data => {
     cardsList.renderItems(data)
@@ -57,6 +63,9 @@ const placeFormPopup = new PopupWithForm(placeFormPopupSelector, handlePlaceForm
 const placeFormValidator = new FormValidator(validationParams, placeFormElement);
 placeFormPopup.setEventListeners();
 placeFormValidator.enableValidation();
+
+const confirmPopup = new PopupWithConfirm(confirmFormPopupSelector, handleConfirmFormSubmit);
+confirmPopup.setEventListeners();
 
 const placePopup = new PopupWithImage(placePopupSelector);
 placePopup.setEventListeners();
@@ -82,8 +91,8 @@ function handlePersonFormSubmit(data) {
             userInfo.setUserInfo(res);
         })
         .finally(() => {
-            this.updateSubmitButtonText(false);
-            this.close();
+            personFormPopup.updateSubmitButtonText(false);
+            personFormPopup.close();
         });
 }
 
@@ -92,25 +101,41 @@ function handlePlaceFormSubmit(cardData) {
 
     api.addNewCard({name: cardData.placename, link: cardData.placepic})
         .then((res) => {
-            const newCard = createCard({name: cardData.placename, link: cardData.placepic});
+            const newCard = createCard(res);
             const submitButtonElement = this._element.querySelector(submitButtonSelector);
             submitButtonElement.classList.add(validationParams.inactiveButtonClass);
             cardsContainer.prepend(newCard);
         })
         .finally(() => {
-            this.updateSubmitButtonText(false);
-            this.close();
+            placeFormPopup.updateSubmitButtonText(false);
+            placeFormPopup.close();
         });
 
 }
 
-function createCard(data){
-    const card = new Card(data, cardTemplateSelector, handleCardClick);
+function handleConfirmFormSubmit(cardData) {
+    api.deleteCard(cardData)
+        .then((res) => {
+            document.getElementById(cardData._id).remove();
+        })
+        .finally(() => {
+            confirmPopup.close();
+        });
+}
+
+function createCard(data) {
+    const card = new Card(data, cardTemplateSelector, currentUserId,
+        {handleCardClick, handleTrashButtonClick});
     const cardElement = card.getCard();
     return cardElement;
 }
 
-function handleCardClick(link, name){
-    placePopup.open(link, name);
+function handleCardClick(data){
+    placePopup.open(data);
 }
+
+function handleTrashButtonClick(data) {
+    confirmPopup.open(data);
+}
+
 

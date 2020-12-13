@@ -6,6 +6,7 @@ export const personInputSelector = ".popup__input-person";
 export const positionInputSelector = ".popup__input-position";
 export const personFormPopupSelector = ".popup_type_person-form";
 export const placeFormPopupSelector = ".popup_type_place-form";
+export const confirmFormPopupSelector = ".popup_type_confirm-form";
 export const placePopupSelector = ".popup_type_place";
 export const submitButtonSelector = ".popup__button";
 export const profileFormSelector = ".popup__form-profile";
