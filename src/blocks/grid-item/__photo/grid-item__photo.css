@@ -6,3 +6,7 @@
     border-top-right-radius: 10px;
     display: inline-block;
 }
+
+.grid-item__photo:hover {
+    cursor: pointer;
+}
