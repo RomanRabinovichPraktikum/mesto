@@ -52,11 +52,14 @@ api.getUserInfo()
     .then(data => {
         currentUserId = data._id;
         userInfo.setUserInfo(data)
-    });
+    })
+    .catch(err => console.log(err));
 
-api.getInitialCards().then(data => {
-    cardsList.renderItems(data)
-});
+api.getInitialCards()
+    .then(data => {
+        cardsList.renderItems(data)
+    })
+    .catch(err => console.log(err));
 
 const personFormPopup = new PopupWithForm(personFormPopupSelector, handlePersonFormSubmit);
 const editProfileFormValidator = new FormValidator(validationParams, profileFormElement);
@@ -107,6 +110,7 @@ function handlePersonFormSubmit(data) {
             userInfo.setUserInfo(res);
             personFormPopup.close();
         })
+        .catch(err => console.log(err))
         .finally(() => {
             personFormPopup.updateSubmitButtonText(false);
         });
@@ -120,6 +124,7 @@ function handleAvatarFormSubmit(data) {
             userInfo.setUserInfo(res);
             avatarFormPopup.close();
         })
+        .catch(err => console.log(err))
         .finally(() => {
             avatarFormPopup.updateSubmitButtonText(false);
         });
@@ -136,6 +141,7 @@ function handlePlaceFormSubmit(cardData) {
             cardsContainer.prepend(newCard);
             placeFormPopup.close();
         })
+        .catch(err => console.log(err))
         .finally(() => {
             placeFormPopup.updateSubmitButtonText(false);
         });
@@ -147,7 +153,8 @@ function handleConfirmFormSubmit(cardData) {
         .then((res) => {
             document.getElementById(cardData._id).remove();
             confirmPopup.close();
-        });
+        })
+        .catch(err => console.log(err));
 }
 
 function createCard(data) {
@@ -171,7 +178,8 @@ function handleLike(data) {
     api.likeCard(data)
         .then((data) => {
             card.updateData(data);
-        });
+        })
+        .catch(err => console.log(err));
 }
 
 function handleDislike(data) {
@@ -180,5 +188,6 @@ function handleDislike(data) {
     api.dislikeCard(data)
         .then((data) => {
             card.updateData(data);
-        });
+        })
+        .catch(err => console.log(err));
 }

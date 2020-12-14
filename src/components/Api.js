@@ -7,25 +7,12 @@ export default class Api {
         this._headers = options.headers;
     }
 
-
-    /*
-    +получить список всех карточек в виде массива (GET)
-    +добавить карточку (POST)
-    +удалить карточку (DELETE)
-    +получить данные пользователя (GET)
-    +заменить данные пользователя (PATCH)
-    +заменить аватар (PATCH)
-    +“залайкать” карточку (PUT)
-    +удалить лайк карточки (DELETE)
-     */
-
     getUserInfo() {
         return fetch(`${this._baseUrl}/users/me`, {
             method: 'GET',
             headers: this._headers
         })
-        .then(this._handleResponse)
-        .catch(err => console.log(err));
+        .then(this._handleResponse);
     }
 
     setUserInfo(data) {
@@ -37,8 +24,7 @@ export default class Api {
                 about: data.about
             })
         })
-        .then(this._handleResponse)
-        .catch(err => console.log(err));
+        .then(this._handleResponse);
     }
 
     addNewCard(data) {
@@ -50,8 +36,7 @@ export default class Api {
                 link: data.link
             })
         })
-        .then(this._handleResponse)
-        .catch(err => console.log(err));
+        .then(this._handleResponse);
     }
 
     deleteCard(data) {
@@ -59,8 +44,7 @@ export default class Api {
             method: 'DELETE',
             headers: this._headers
         })
-        .then(this._handleResponse)
-        .catch(err => console.log(err));
+        .then(this._handleResponse);
     }
 
     getInitialCards() {
@@ -68,8 +52,7 @@ export default class Api {
             method: 'GET',
             headers: this._headers
         })
-        .then(this._handleResponse)
-        .catch(err => console.log(err));
+        .then(this._handleResponse);
     }
 
     updateUserAvatar(data) {
@@ -80,8 +63,7 @@ export default class Api {
                 avatar: data.avatar
             })
         })
-        .then(this._handleResponse)
-        .catch(err => console.log(err));
+        .then(this._handleResponse);
     }
 
     likeCard(data) {
@@ -89,8 +71,7 @@ export default class Api {
             method: 'PUT',
             headers: this._headers,
         })
-        .then(this._handleResponse)
-        .catch(err => console.log(err));
+        .then(this._handleResponse);
     }
 
     dislikeCard(data) {
@@ -98,8 +79,7 @@ export default class Api {
             method: 'DELETE',
             headers: this._headers,
         })
-        .then(this._handleResponse)
-        .catch(err => console.log(err));
+        .then(this._handleResponse);
     }
 
     _handleResponse(res) {
