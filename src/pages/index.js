@@ -105,10 +105,10 @@ function handlePersonFormSubmit(data) {
     api.setUserInfo({name: data.person, about: data.position})
         .then((res) => {
             userInfo.setUserInfo(res);
+            personFormPopup.close();
         })
         .finally(() => {
             personFormPopup.updateSubmitButtonText(false);
-            personFormPopup.close();
         });
 }
 
@@ -118,10 +118,10 @@ function handleAvatarFormSubmit(data) {
     api.updateUserAvatar(data)
         .then((res) => {
             userInfo.setUserInfo(res);
+            avatarFormPopup.close();
         })
         .finally(() => {
             avatarFormPopup.updateSubmitButtonText(false);
-            avatarFormPopup.close();
         });
 }
 
@@ -134,10 +134,10 @@ function handlePlaceFormSubmit(cardData) {
             const submitButtonElement = this._element.querySelector(submitButtonSelector);
             submitButtonElement.classList.add(validationParams.inactiveButtonClass);
             cardsContainer.prepend(newCard);
+            placeFormPopup.close();
         })
         .finally(() => {
             placeFormPopup.updateSubmitButtonText(false);
-            placeFormPopup.close();
         });
 
 }
@@ -146,8 +146,6 @@ function handleConfirmFormSubmit(cardData) {
     api.deleteCard(cardData)
         .then((res) => {
             document.getElementById(cardData._id).remove();
-        })
-        .finally(() => {
             confirmPopup.close();
         });
 }
